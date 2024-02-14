@@ -94,3 +94,25 @@ footer {
   text-align: center;
   padding: 5px;
 }
+.footer-icons-container {
+  text-align: center;
+}
+
+.footer-icons-container .icon {
+  width: 30px; /* Adjust width as needed */
+  height: 30px; /* Adjust height as needed */
+  margin: 0 5px; /* Adjust margin as needed */
+  color: white; /* Set icon color to white */
+}
+
+/* Move icons to the bottom */
+.footer-icons-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* Hover effect */
+.footer-icons-container .icon:hover {
+  opacity: 0.7; /* For example, reduce opacity */
+}
