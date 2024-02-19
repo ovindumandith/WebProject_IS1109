@@ -1,0 +1,62 @@
+<!-- <?php require_once('include/connection.php'); ?>
+
+<?php
+    if(isset($_POST['create'])){
+
+        $Firstname = $_POST['firstname'];
+        $Lastname = $_POST['lastname'];
+        $Email = $_POST['email'];
+        $Age = $_POST['age'];
+        $Password = $_POST['password'];
+    
+        $query = "INSERT INTO userdetails (firstName,lastName,email,age,password) VALUES ('{$Firstname}','{$Lastname}','{$Email}','{$Age}','{$Password}')";
+    
+        $result = mysqli_query($connection,$query);
+    
+        if ($result){
+            echo "<script> alert('Your account created succesfully'); </script>";
+        }
+        else{
+            echo "<script> alert('Account creation failed!'); </script>";
+        }       
+    }
+?> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register | Apexx</title>
+    <link rel="stylesheet" href="style-register.css">
+</head>
+<body>
+
+    <form class="registerbox" action="process-register.php" method="post">
+        <h1>Register</h1>
+
+        <div class="input-box box-1">
+            <input type="text" placeholder="First Name" name="firstname" required>
+            <input type="text" placeholder="Last Name" name="lastname" required>
+        </div>
+        <div class="input-box">
+            <input type="email" placeholder="Email" name="email" required>
+        </div>
+        <div class="input-box">
+            <input type="text" placeholder="Age" name="age" required>
+        </div>
+        <div class="input-box">
+            <input type="password" placeholder="Password" name="password" required>
+        </div>
+        
+        <div class="login-link">
+            <input type="submit" value="Create account" class="btn">
+            <div>
+                Already have an account?
+                <a href="loginpage.html">Login</a>
+            </div>
+        </div>
+
+    </form>
+
+</body>
+</html>
+<!-- <?php mysqli_close($connection); ?> -->

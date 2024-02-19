@@ -1,0 +1,71 @@
+<!-- <?php require_once('include/connection.php'); ?>
+
+<?php 
+
+    if(isset($_POST['submit'])){
+        $Email = $_POST['email'];
+        $Password = $_POST['password'];
+        // $login_check = false;
+
+        $query = "SELECT * FROM userdetails WHERE email='{$Email}'";
+
+        $result_set = mysqli_query($connection, $query);
+
+        while($record =  mysqli_fetch_assoc($result_set)){
+            if($record['password'] == $Password) {
+                header("Location: index.php");
+            }   
+        }
+
+        echo "<script> alert('Your login failed! Username or password is incorrect'); </script>";    
+    }
+
+    
+    
+?> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Apexx</title>
+    <link rel="stylesheet" href="style-login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    
+    <div class="mid">
+        <form action="loginpage.php" method="post" class="loginform" autocomplete="off">
+            <h1>Login</h1>
+    
+            <div class="input-box">
+                <input type="email" placeholder="Email" name="email" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" name="password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">Remember me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+    
+            <input type="submit" value="Login" name="submit" class="btn">
+    
+    
+            <div class="register-link">
+                <p>Don't have an account? <a href="registerpage.php">Register</a></p>
+            </div>
+        </form>
+    </div>
+    
+
+</body>
+
+</html>
+<!-- <?php mysqli_close($connection); ?> -->
