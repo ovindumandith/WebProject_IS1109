@@ -7,9 +7,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap"
     />
+
     <link href="../css/header+footer.css" rel="stylesheet" type="text/css" />
-    <link href="../css/article.css" rel="stylesheet" type="text/css" />
-    <title>Your Page Title</title>
+    <script src="script.js" defer></script>
+    <title>Admin Profile</title>
   </head>
 
   <body>
@@ -38,36 +39,10 @@
           <a href="#">View past Tickets</a>
         </div>
       </div>
-      <a href="#">Users</a>
+      <a href="article.html">Users</a>
       <a href="#">Knowledge Base</a>
       <a href="#">Feedback</a>
     </nav>
-    <!-- Form Section -->
-    <h2>Submit Article</h2>
-    <form action="../php/article.php" method="POST">
-      <label for="articleID">Article ID:</label><br />
-      <input type="text" id="articleID" name="articleID" /><br /><br />
-
-      <label for="heading">Heading:</label><br />
-      <input type="text" id="heading" name="heading" /><br /><br />
-
-      <label for="description">Description:</label><br />
-      <textarea
-        id="description"
-        name="description"
-        rows="4"
-        cols="50"
-      ></textarea
-      ><br /><br />
-
-      <input type="submit" value="Submit" />
-    </form>
-    <br />
-    <!-- Button to view inserted records -->
-    <form action="../php/view_articles.php" method="GET">
-      <input type="submit" value="View Inserted Articles" />
-    </form>
-    <br />
 
     <footer>
       <p>© 2024 ABC Support Desk. All rights reserved.</p>
