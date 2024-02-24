@@ -24,20 +24,16 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/header+footer.css" rel="stylesheet" type="text/css">
     <title>View Tickets</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
         table {
-            width: 100%;
+            width: 90%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin: 20px auto;
         }
         th, td {
-            padding: 12px 15px;
+            padding: 8px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
@@ -56,62 +52,94 @@ $result = $conn->query($sql);
         h2 {
             margin-top: 30px;
             color: #333;
+            text-align: center;
         }
         .action-column {
-            width: 120px;
+            width: 160px;
+            text-align: center;
         }
         .action-button {
-            padding: 8px 12px;
+            padding: 6px 10px;
             border: none;
             background-color: #007bff;
             color: #fff;
             cursor: pointer;
             border-radius: 4px;
             text-decoration: none;
-            display: inline-block;
             transition: background-color 0.3s;
+            margin-right: 5px;
         }
         .action-button:hover {
             background-color: #0056b3;
         }
-        textarea {
-            width: 100%;
-            padding: 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            margin-top: 5px;
-        }
     </style>
 </head>
 <body>
+    <header>
+        <!-- Company Logo and Title -->
+        <div class="logo-container">
+            <img src="../resources/logo.png" alt="Company Logo" />
+            <div class="title-container">
+                <h1>ABC Support Desk</h1>
+            </div>
+        </div>
 
-<h2>View Tickets</h2>
+        <!-- Profile Icon -->
+        <div class="profile-icon-container">
+            <a href="#"><img src="../resources/user.png" alt="Profile Icon" /></a>
+        </div>
+    </header>
 
-<?php
-if ($result->num_rows > 0) {
-    echo "<table>";
-    echo "<tr><th>Ticket ID</th><th>Subject</th><th>Message</th><th>Category</th><th>Priority</th><th class='action-column'>Reply</th><th class='action-column'>Delete</th></tr>";
-    // Output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>".$row["ticket_ID"]."</td>";
-        echo "<td>".$row["subject"]."</td>";
-        echo "<td>".$row["message"]."</td>";
-        echo "<td>".$row["category"]."</td>";
-        echo "<td>".$row["priority"]."</td>";
-        echo "<td class='action-column'><form action='../php/ticket_reply.php' method='POST'>";
-        echo "<input type='hidden' name='id' value='".$row["ticket_ID"]."'>";
-        echo "<textarea name='reply' placeholder='Enter your reply here...' rows='4' cols='50'></textarea><br>";
-        echo "<button type='submit' class='action-button'>Reply</button>";
-        echo "</form></td>";
-        echo "<td class='action-column'><form action='../php/delete_ticket.php' method='GET'><input type='hidden' name='id' value='".$row["ticket_ID"]."'><button type='submit' class='action-button'>Delete</button></form></td>";
-        echo "</tr>";
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#">Home</a>
+        <div class="dropdown">
+            <a href="#">Tickets ▾</a>
+            <div class="dropdown-content">
+                <a href="#">Submit a Ticket</a>
+                <a href="#">View past Tickets</a>
+            </div>
+        </div>
+        <a href="article.html">Knowledge Base</a>
+        <a href="#">Contact</a>
+        <a href="#">Feedback</a>
+    </nav>
+
+    <h2>View Tickets</h2>
+
+    <?php
+    if ($result->num_rows > 0) {
+        echo "<table>";
+        echo "<tr><th>Ticket ID</th><th>Subject</th><th>Message</th><th>Category</th><th>Priority</th><th class='action-column'>Actions</th></tr>";
+        // Output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>".$row["ticket_ID"]."</td>";
+            echo "<td>".$row["subject"]."</td>";
+            echo "<td>".$row["message"]."</td>";
+            echo "<td>".$row["category"]."</td>";
+            echo "<td>".$row["priority"]."</td>";
+            echo "<td class='action-column'>";
+            echo "<a href='../php/reply_ticket.php?id=".$row["ticket_ID"]."' class='action-button'>Reply</a>";
+            echo "<a href='../php/delete_ticket.php?id=".$row["ticket_ID"]."' class='action-button' style='background-color: #dc3545;'>Delete</a>";
+            echo "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "0 results";
     }
-    echo "</table>";
-} else {
-    echo "0 results";
-}
-?>
+    ?>
 
+    <footer>
+        <p>© 2024 ABC Support Desk. All rights reserved.</p>
+        <div class="social-media-icons">
+            <div class="icon-container">
+                <a href="https://www.facebook.com/yourpage"><img src="../resources/facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/yourpage"><img src="../resources/instagram.png" alt="Instagram"></a>
+                <a href="https://www.linkedin.com/yourpage"><img src="../resources/linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

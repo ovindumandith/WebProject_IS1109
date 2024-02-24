@@ -43,6 +43,7 @@ if(isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/header+footer.css" rel="stylesheet" type="text/css">
     <title>Update Article</title>
 
 
@@ -88,6 +89,36 @@ input[type="submit"]:hover {
     </style>
 </head>
 <body>
+  <header>
+      <!-- Company Logo and Title -->
+      <div class="logo-container">
+        <img src="../resources/logo.png" alt="Company Logo" />
+        <div class="title-container">
+          <h1>ABC Support Desk</h1>
+        </div>
+      </div>
+
+      <!-- Profile Icon -->
+      <div class="profile-icon-container">
+        <a href="#"><img src="../resources/user.png" alt="Profile Icon" /></a>
+      </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+      <a href="#">Home</a>
+      <div class="dropdown">
+        <a href="#">Tickets ▾</a>
+        <div class="dropdown-content">
+          <a href="#">Submit a Ticket</a>
+          <a href="#">View past Tickets</a>
+        </div>
+      </div>
+      <a href="article.html">Knowledge Base</a>
+      <a href="#">Contact</a>
+      <a href="#">Feedback</a>
+    </nav>
+
 
 <h2>Update Article</h2>
 
@@ -98,7 +129,24 @@ input[type="submit"]:hover {
     <label for="description">Description:</label><br>
     <textarea id="description" name="description" rows="4" cols="50"><?php echo $description; ?></textarea><br><br>
     <input type="submit" value="Update">
-</form>
+</form><br>
+<footer>
+      <p>© 2024 ABC Support Desk. All rights reserved.</p>
+      <div class="social-media-icons">
+        <div class="icon-container">
+          <a href="https://www.facebook.com/yourpage"
+            ><img src="../resources/facebook.png" alt="Facebook"
+          /></a>
+
+          <a href="https://www.instagram.com/yourpage"
+            ><img src="../resources/instagram.png" alt="Instagram"
+          /></a>
+          <a href="https://www.linkedin.com/yourpage"
+            ><img src="../resources/linkedin.png" alt="LinkedIn"
+          /></a>
+        </div>
+      </div>
+    </footer>
 
 </body>
 </html>

@@ -27,58 +27,85 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Inserted Records</title>
+    <link href="../css/header+footer.css" rel="stylesheet" type="text/css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+
         table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-            color: #333;
-            text-transform: uppercase;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        tr:hover {
-            background-color: #f2f2f2;
-        }
-        h2 {
-            margin-top: 30px;
-            color: #333;
-        }
-        .action-column {
-            width: 120px;
-        }
-        .action-button {
-            padding: 8px 12px;
-            border: none;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 4px;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s;
-        }
-        .action-button:hover {
-            background-color: #0056b3;
-        }
+        width: 90%; /* Reduce table width */
+        border-collapse: collapse;
+        margin: 20px auto; /* Center the table */
+    }
+    th, td {
+        padding: 8px; /* Reduce cell padding */
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #333;
+        text-transform: uppercase;
+    }
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    tr:hover {
+        background-color: #f2f2f2;
+    }
+    h2 {
+        margin-top: 30px;
+        color: #333;
+        text-align: center; /* Center the heading */
+    }
+    .action-column {
+        width: 80px; /* Reduce action column width */
+        text-align: center; /* Center the action buttons */
+    }
+    .action-button {
+        padding: 6px 10px; /* Adjust button padding */
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+    .action-button:hover {
+        background-color: #0056b3;
+    }
     </style>
 </head>
 <body>
+    <header>
+      <!-- Company Logo and Title -->
+      <div class="logo-container">
+        <img src="../resources/logo.png" alt="Company Logo" />
+        <div class="title-container">
+          <h1>ABC Support Desk</h1>
+        </div>
+      </div>
+
+      <!-- Profile Icon -->
+      <div class="profile-icon-container">
+        <a href="#"><img src="../resources/user.png" alt="Profile Icon" /></a>
+      </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+      <a href="#">Home</a>
+      <div class="dropdown">
+        <a href="#">Tickets ▾</a>
+        <div class="dropdown-content">
+          <a href="#">Submit a Ticket</a>
+          <a href="#">View past Tickets</a>
+        </div>
+      </div>
+      <a href="article.html">Knowledge Base</a>
+      <a href="#">Contact</a>
+      <a href="#">Feedback</a>
+    </nav>
 
 <h2>Inserted Records</h2>
 
@@ -101,6 +128,23 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 ?>
+<footer>
+      <p>© 2024 ABC Support Desk. All rights reserved.</p>
+      <div class="social-media-icons">
+        <div class="icon-container">
+          <a href="https://www.facebook.com/yourpage"
+            ><img src="../resources/facebook.png" alt="Facebook"
+          /></a>
+
+          <a href="https://www.instagram.com/yourpage"
+            ><img src="../resources/instagram.png" alt="Instagram"
+          /></a>
+          <a href="https://www.linkedin.com/yourpage"
+            ><img src="../resources/linkedin.png" alt="LinkedIn"
+          /></a>
+        </div>
+      </div>
+    </footer>
 
 </body>
 </html>
