@@ -17,8 +17,6 @@ if ($conn->connect_error) {
 $sql = "SELECT * FROM ticket";
 $result = $conn->query($sql);
 
-// Close connection
-$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -76,6 +74,13 @@ $conn->close();
         .action-button:hover {
             background-color: #0056b3;
         }
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -85,7 +90,7 @@ $conn->close();
 <?php
 if ($result->num_rows > 0) {
     echo "<table>";
-    echo "<tr><th>Ticket ID</th><th>Subject</th><th>Message</th><th>Category</th><th>Priority</th><th class='action-column'>Update</th><th class='action-column'>Delete</th></tr>";
+    echo "<tr><th>Ticket ID</th><th>Subject</th><th>Message</th><th>Category</th><th>Priority</th><th class='action-column'>Reply</th><th class='action-column'>Delete</th></tr>";
     // Output data of each row
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
@@ -94,7 +99,11 @@ if ($result->num_rows > 0) {
         echo "<td>".$row["message"]."</td>";
         echo "<td>".$row["category"]."</td>";
         echo "<td>".$row["priority"]."</td>";
-        echo "<td class='action-column'><form action='../php/update_ticket.php' method='GET'><input type='hidden' name='id' value='".$row["ticket_ID"]."'><button type='submit' class='action-button'>Update</button></form></td>";
+        echo "<td class='action-column'><form action='../php/ticket_reply.php' method='POST'>";
+        echo "<input type='hidden' name='id' value='".$row["ticket_ID"]."'>";
+        echo "<textarea name='reply' placeholder='Enter your reply here...' rows='4' cols='50'></textarea><br>";
+        echo "<button type='submit' class='action-button'>Reply</button>";
+        echo "</form></td>";
         echo "<td class='action-column'><form action='../php/delete_ticket.php' method='GET'><input type='hidden' name='id' value='".$row["ticket_ID"]."'><button type='submit' class='action-button'>Delete</button></form></td>";
         echo "</tr>";
     }
