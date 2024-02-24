@@ -1,9 +1,9 @@
 <?php
 // Database connection parameters
-$servername = "localhost"; 
-$username = "root"; 
-$password = ""; 
-$dbname = "web_test"; 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "web_test";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -120,7 +120,7 @@ $result = $conn->query($sql);
             echo "<td>".$row["category"]."</td>";
             echo "<td>".$row["priority"]."</td>";
             echo "<td class='action-column'>";
-            echo "<a href='../php/reply_ticket.php?id=".$row["ticket_ID"]."' class='action-button'>Reply</a>";
+            echo "<a href='../php/reply_ticket.php?id=".$row["ticket_ID"]."&subject=".$row["subject"]."&message=".$row["message"]."&category=".$row["category"]."&priority=".$row["priority"]."' class='action-button'>Reply</a>";
             echo "<a href='../php/delete_ticket.php?id=".$row["ticket_ID"]."' class='action-button' style='background-color: #dc3545;'>Delete</a>";
             echo "</td>";
             echo "</tr>";
@@ -131,15 +131,22 @@ $result = $conn->query($sql);
     }
     ?>
 
-    <footer>
-        <p>© 2024 ABC Support Desk. All rights reserved.</p>
-        <div class="social-media-icons">
-            <div class="icon-container">
-                <a href="https://www.facebook.com/yourpage"><img src="../resources/facebook.png" alt="Facebook"></a>
-                <a href="https://www.instagram.com/yourpage"><img src="../resources/instagram.png" alt="Instagram"></a>
-                <a href="https://www.linkedin.com/yourpage"><img src="../resources/linkedin.png" alt="LinkedIn"></a>
-            </div>
+     <footer>
+      <p>© 2024 ABC Support Desk. All rights reserved.</p>
+      <div class="social-media-icons">
+        <div class="icon-container">
+          <a href="https://www.facebook.com/yourpage"
+            ><img src="../resources/facebook.png" alt="Facebook"
+          /></a>
+
+          <a href="https://www.instagram.com/yourpage"
+            ><img src="../resources/instagram.png" alt="Instagram"
+          /></a>
+          <a href="https://www.linkedin.com/yourpage"
+            ><img src="../resources/linkedin.png" alt="LinkedIn"
+          /></a>
         </div>
+      </div>
     </footer>
-</body>
+      </body>
 </html>
