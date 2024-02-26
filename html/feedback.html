@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
+    <title>Feedback</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/feedback.css" />
+    <link href="../css/header+footer.css" rel="stylesheet" type="text/css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap"
     />
-    <link href="../css/header+footer.css" rel="stylesheet" type="text/css" />
-    <link href="../css/article.css" rel="stylesheet" type="text/css" />
-    <title>Your Page Title</title>
   </head>
-
   <body>
     <header>
       <!-- Company Logo and Title -->
@@ -30,7 +29,7 @@
 
     <!-- Navigation Bar -->
     <nav>
-      <a href="../html/admin_home.html">Home</a>
+      <a href="#">Home</a>
       <div class="dropdown">
         <a href="../php/view_ticket.php">Tickets</a>
       </div>
@@ -42,33 +41,40 @@
 
       <a href="../html/admin_feedback.html">Feedback</a>
     </nav>
-    <!-- Form Section -->
-    <h2>Submit Article</h2>
-    <form action="../php/article.php" method="POST">
-      <label for="articleID">Article ID:</label><br />
-      <input type="text" id="articleID" name="articleID" /><br /><br />
-
-      <label for="heading">Heading:</label><br />
-      <input type="text" id="heading" name="heading" /><br /><br />
-
-      <label for="description">Description:</label><br />
+    <br />
+    <div class="container">
+      <div class="wrapper">
+        <p class="text">Rate your experience !</p>
+        <p class="smalltxt">
+          We highly value your feedback! kindly take a moment to rate your
+          experience.
+        </p>
+        <div class="emoji">
+          <div>😩</div>
+          <div>😐</div>
+          <div>🙂</div>
+          <div>😃</div>
+          <div>😍</div>
+        </div>
+      </div>
       <textarea
-        id="description"
-        name="description"
-        rows="4"
-        cols="50"
-      ></textarea
-      ><br /><br />
+        class="textarea"
+        cols="30"
+        rows="5"
+        placeholder="Tell us about your experience!"
+      ></textarea>
 
-      <input type="submit" value="Submit" />
-    </form>
-    <br />
-    <!-- Button to view inserted records -->
-    <form action="../php/view_articles.php" method="GET">
-      <input type="submit" value="View Inserted Articles" />
-    </form>
-    <br />
+      <a href="#" class="btn" onclick="openPopup()">Send</a>
+    </div>
+    <div class="popup" id="popup">
+      <img src="../resources/tick.jpg" />
+      <h2>Thank You !</h2>
+      <p>Your feedback has been successfully submitted.</p>
+      <button type="button" onclick="closePopup()">OK</button>
+    </div>
 
+    <script src="../js/feedback.js"></script>
+    <br />
     <footer>
       <p>© 2024 ABC Support Desk. All rights reserved.</p>
       <div class="social-media-icons">

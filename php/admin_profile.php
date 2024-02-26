@@ -67,20 +67,21 @@ if(isset($_GET['admin_id'])) {
     </header>
 
     <!-- Navigation Bar -->
-    <nav>
-      <a href="#">Home</a>
+     <nav>
+      <a href="../html/admin_home.html">Home</a>
       <div class="dropdown">
-        <a href="#">Tickets ▾</a>
+        <a href="../php/view_ticket.php">Tickets</a>
+      </div>
+      <div class="dropdown">
+        <a href="../php/view_user.php">Users</a>
         <div class="dropdown-content">
-          <a href="#">Submit a Ticket</a>
-          <a href="#">View past Tickets</a>
+
         </div>
       </div>
-      <a href="article.html">Knowledge Base</a>
-      <a href="#">Contact</a>
-      <a href="#">Feedback</a>
-    </nav>
+      <a href="../html/article.html">Knowledge Base</a>
 
+      <a href="../html/admin_feedback.html">Feedback</a>
+    </nav>
             
             <div class="container">
                 <h1>User Details</h1>

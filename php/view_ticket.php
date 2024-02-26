@@ -92,17 +92,19 @@ $result = $conn->query($sql);
 
     <!-- Navigation Bar -->
     <nav>
-        <a href="#">Home</a>
-        <div class="dropdown">
-            <a href="#">Tickets ▾</a>
-            <div class="dropdown-content">
-                <a href="#">Submit a Ticket</a>
-                <a href="#">View past Tickets</a>
-            </div>
+      <a href="../html/admin_home.html">Home</a>
+      <div class="dropdown">
+        <a href="../php/view_ticket.php">Tickets</a>
+      </div>
+      <div class="dropdown">
+        <a href="../php/view_user.php">Users</a>
+        <div class="dropdown-content">
+
         </div>
-        <a href="article.html">Knowledge Base</a>
-        <a href="#">Contact</a>
-        <a href="#">Feedback</a>
+      </div>
+      <a href="../html/article.html">Knowledge Base</a>
+
+      <a href="../html/admin_feedback.html">Feedback</a>
     </nav>
 
     <h2>View Tickets</h2>
