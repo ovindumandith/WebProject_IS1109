@@ -25,6 +25,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/header+footer.css" rel="stylesheet" type="text/css">
+    <link href="../css/search-bar.css" rel="stylesheet" type="text/css">
     <title>View Tickets</title>
     <style>
         table {
@@ -72,6 +73,18 @@ $result = $conn->query($sql);
         .action-button:hover {
             background-color: #0056b3;
         }
+        #mySelect{
+            
+    font-size: 16px;
+    line-height: 1;
+    border: 0;
+    border-radius: 5px;
+    height: 50px;
+    padding: 10px;
+    background: #f1f1f1;
+    color: #333;
+
+        }
     </style>
 </head>
 <body>
@@ -106,12 +119,24 @@ $result = $conn->query($sql);
 
       <a href="../html/admin_feedback.html">Feedback</a>
     </nav>
+        <div class="search-bar">
+      <input type="text" id="myInput" placeholder="Search..." />
+      <button type="submit">Search</button>
+    </div>
+    <select id="mySelect">
+    <option value="0">Ticket ID</option>
+    <option value="1">Subject</option>
+    <option value="2">Message</option>
+    <option value="3">Category</option>
+    <option value="4">Priority</option>
+</select>
+
 
     <h2>View Tickets</h2>
 
     <?php
     if ($result->num_rows > 0) {
-        echo "<table>";
+        echo "<table id='myTable'>";
         echo "<tr><th>Ticket ID</th><th>Subject</th><th>Message</th><th>Category</th><th>Priority</th><th class='action-column'>Actions</th></tr>";
         // Output data of each row
         while($row = $result->fetch_assoc()) {
@@ -132,6 +157,7 @@ $result = $conn->query($sql);
         echo "0 results";
     }
     ?>
+    <script src="../js/ticket-search.js"></script>
 
      <footer>
       <p>© 2024 ABC Support Desk. All rights reserved.</p>

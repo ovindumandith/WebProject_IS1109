@@ -28,6 +28,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Inserted Records</title>
     <link href="../css/header+footer.css" rel="stylesheet" type="text/css">
+    <link href="../css/search-bar.css" rel="stylesheet" type="text/css">
     <style>
 
         table {
@@ -74,6 +75,7 @@ $conn->close();
     .action-button:hover {
         background-color: #0056b3;
     }
+
     </style>
 </head>
 <body>
@@ -108,12 +110,16 @@ $conn->close();
 
       <a href="../html/admin_feedback.html">Feedback</a>
     </nav>
+    <div class="search-bar">
+      <input type="text" id="myInput" placeholder="Search..." />
+      <button type="submit">Search</button>
+    </div>
 
 <h2>Inserted Records</h2>
 
 <?php
 if ($result->num_rows > 0) {
-    echo "<table>";
+    echo "<table id='myTable'>";
     echo "<tr><th>Article ID</th><th>Heading</th><th>Description</th><th class='action-column'>Update</th><th class='action-column'>Delete</th></tr>";
     // Output data of each row
     while($row = $result->fetch_assoc()) {
@@ -130,6 +136,8 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 ?>
+<script src="../js/ticket-search.js"></script>
+
 <footer>
       <p>© 2024 ABC Support Desk. All rights reserved.</p>
       <div class="social-media-icons">
