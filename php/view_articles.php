@@ -1,9 +1,9 @@
 <?php
 // Database connection parameters
-$servername = "localhost"; // Change this to your MySQL server hostname
-$username = "root"; // Change this to your MySQL username
-$password = ""; // Change this to your MySQL password
-$dbname = "web_test"; // Change this to your MySQL database name
+$servername = "localhost"; 
+$username = "root"; 
+$password = ""; 
+$dbname = "web_test"; 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -107,8 +107,7 @@ $conn->close();
         </div>
       </div>
       <a href="../html/article.html">Knowledge Base</a>
-
-      <a href="../html/admin_feedback.html">Feedback</a>
+     <a href="../php/view_feedback.php">Feedback</a>
     </nav>
     <div class="search-bar">
       <input type="text" id="myInput" placeholder="Search..." />

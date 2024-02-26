@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         echo "Reply submitted successfully.";
         // Redirect to admin_home.html
-        header("Location: ../html/admin_home.html");
+        header("Location: ../php/view_ticket.php");
         exit;
     } else {
         echo "Error: " . $stmt->error;

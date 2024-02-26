@@ -80,7 +80,7 @@ if(isset($_GET['admin_id'])) {
       </div>
       <a href="../html/article.html">Knowledge Base</a>
 
-      <a href="../html/admin_feedback.html">Feedback</a>
+      <a href="../php/view_feedback.php">Feedback</a>
     </nav>
             
             <div class="container">

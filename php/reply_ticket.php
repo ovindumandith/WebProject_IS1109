@@ -61,7 +61,7 @@ $priority = $_GET['priority'];
       </div>
       <a href="../html/article.html">Knowledge Base</a>
 
-      <a href="../html/admin_feedback.html">Feedback</a>
+     <a href="../php/view_feedback.php">Feedback</a>
     </nav>
     <h2>Reply to Ticket</h2>
 

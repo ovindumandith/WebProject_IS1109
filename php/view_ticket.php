@@ -117,13 +117,13 @@ $result = $conn->query($sql);
       </div>
       <a href="../html/article.html">Knowledge Base</a>
 
-      <a href="../html/admin_feedback.html">Feedback</a>
+      <a href="../php/view_feedback.php">Feedback</a>
     </nav>
         <div class="search-bar">
       <input type="text" id="myInput" placeholder="Search..." />
       <button type="submit">Search</button>
     </div>
-    <select id="mySelect">
+    <select id="mySelect" style="border: 2px solid black; ">
     <option value="0">Ticket ID</option>
     <option value="1">Subject</option>
     <option value="2">Message</option>
