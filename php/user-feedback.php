@@ -1,47 +1,44 @@
 <?php
-session_start();
+session_start(); // Start the session
 
-// Check if user is logged in
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+if (!isset($_SESSION['username'])) // Check if user is logged in
+{
+    header("Location: login.php");// Redirect to login page if not logged in
     exit;
 }
-
-// Include database connection file
-require_once('../include/connection.php');
-
-// Retrieve user information from the database
-$username = $_SESSION['username'];
-$query = "SELECT * FROM userdetails WHERE username = '{$username}'";
-$result = mysqli_query($connection, $query);
-
-// Check if the query was successful and if user exists
-if ($result && mysqli_num_rows($result) > 0) {
-    $user = mysqli_fetch_assoc($result);
-} else {
-    // Handle case where user data is not found
-    $error_message = "User data not found.";
+else {
+    if (isset($_POST["profile"])) {
+        header("Location: profile.php");
+    }
+    else if (isset($_POST["logout"])) {
+        require_once('../include/process-logout.php');
+    }
 }
 
-// Close database connection
-mysqli_close($connection);
+
+
+$username = $_SESSION['username'];// Access username from session
+// $email = $_SESSION['email'];
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Profile Page</title>
-    <link rel="stylesheet" href="../css/profile-user.css">
-
+    <title>Apexx | Home</title>
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/feedback.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/e1d03506f8.js" crossorigin="anonymous"></script>
-    
 </head>
 
-<body><header>
-    <nav>
+<body>
+
+        <!-- Navigation bar Start-->
+        <nav>
             <div class="navbar-outerbox">
                 <div class="logo-box">
                     <a href="home.php"><img src="../resources/logos/appex-text-logo.png" alt="logo"></a>
@@ -51,6 +48,7 @@ mysqli_close($connection);
                         <li><a href="../php/home.php">Home</a></li>
                         <li><a href="../php/knowledgebase.php">Knowledgebase</a></li>
                         <li><a href="../php/user-ticket.php">Tickets</a></li>
+                        <li><a href="../php/user-feedbackt.php">Feedback</a></li>
                         <li><a href="about.html">AboutUS</a></li>
                         <li><a href="contact-us.html">Contact Us</a></li>
                     </ul>
@@ -67,30 +65,43 @@ mysqli_close($connection);
                     </div>
                 </div>
             </div>
-        </nav></header><br>
-         <h2 style="text-align: center;">User Profile</h2>
-<div class="profile-container">
-    <h1>Welcome, <?php echo ucfirst($user['username']); ?>!</h1>
-    <div class="profile-details">
-        <p><strong>Username:</strong> <?php echo $user['username']; ?></p>
-        <p><strong>Email:</strong> <?php echo $user['email']; ?></p>
-        <p><strong>FirstName:</strong> <?php echo $user['firstName']; ?></p>
-        <p><strong>LastName:</strong> <?php echo $user['lastName']; ?></p>
-        <div id="passwordSection">
-            <p><strong>Password:</strong> <span id="password"><?php echo '********'; ?></span></p><br><br><br>
-            <button id="togglePasswordBtn">Show Password</button>
+        </nav>
+<br><br><br><br><br><br><br><br>
+
+<div class="container">
+      <div class="wrapper">
+        <p class="text">Rate your experience !</p>
+        <p class="smalltxt">
+          We highly value your feedback! kindly take a moment to rate your
+          experience.
+        </p>
+        <div class="emoji">
+          <div>😩</div>
+          <div>😐</div>
+          <div>🙂</div>
+          <div>😃</div>
+          <div>😍</div>
         </div>
-        <!-- Add more profile information fields as needed -->
+      </div>
+      <textarea
+        class="textarea"
+        cols="30"
+        rows="5"
+        placeholder="Tell us about your experience!"
+      ></textarea>
 
-        <!-- Button for updating profile details -->
-        <form action="update-userprofile.php" method="post">
-
-        <button id="updateProfileBtn">Update Profile</button></form>
+      <a href="#" class="btn" onclick="openPopup()">Send</a>
     </div>
-</div>
+    <div class="popup" id="popup">
+      <img src="../resources/tick.jpg" />
+      <h2>Thank You !</h2>
+      <p>Your feedback has been successfully submitted.</p>
+      <button type="button" onclick="closePopup()">OK</button>
+    </div>
+<script src="../js/feedback.js"></script>
 
-<script src="../js/show-password.js"></script>
-     <footer>
+
+        <footer>
         <div class="footer-top">    <!--//Footer top.........-->
 
             <div class="footer-top-left">
@@ -129,11 +140,3 @@ mysqli_close($connection);
 
         </div> 
     </footer>
-    <!-- ********************* ------------Footer Section Ends here--------- *********************** -->
-
-
-
-    <script src="../js/home.js"></script>
-</body>
-
-</html>

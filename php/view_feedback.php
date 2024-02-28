@@ -93,7 +93,7 @@ $result = $conn->query($sql);
         <div class="logo-container">
             <img src="../resources/logo.png" alt="Company Logo" />
             <div class="title-container">
-                <h1>ABC Support Desk</h1>
+                <h1>Apexx Solutions Admin Panel</h1>
             </div>
         </div>
 
@@ -147,7 +147,7 @@ $conn->close();
 <script src="../js/feedback-search.js"></script>
 
  <footer>
-      <p>© 2024 ABC Support Desk. All rights reserved.</p>
+      <p>© 2024 Apexx Solutionsk. All rights reserved.</p>
       <div class="social-media-icons">
         <div class="icon-container">
           <a href="https://www.facebook.com/yourpage"

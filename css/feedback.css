@@ -1,6 +1,6 @@
 .container {
   width: 22rem;
-  background-color: #112d32;
+  background-color: #1a40db;
   border-radius: 1rem;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
   overflow: hidden;
@@ -15,7 +15,7 @@
 .text {
   margin-bottom: 1rem;
   font-size: 1.7em;
-  color: #88bdbc;
+  color: #5a75e6;
   text-align: center;
 }
 .smalltxt {
@@ -89,7 +89,7 @@
   transform: translate(-50%, -50%) scale(0.1);
   text-align: center;
   padding: 0 30px 30px;
-  color: #88bdbc;
+  color: #5a75e6;
   visibility: hidden;
   transition: transform 0.4s, top 0.4s;
 }
@@ -113,7 +113,7 @@
   width: 100%;
   margin-top: 50px;
   padding: 10px 0;
-  background: #254e58;
+  background: #5a75e6;
   color: #9cd9d8;
   border: 0;
   outline: none;

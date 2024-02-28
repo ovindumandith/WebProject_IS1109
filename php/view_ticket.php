@@ -93,7 +93,7 @@ $result = $conn->query($sql);
         <div class="logo-container">
             <img src="../resources/logo.png" alt="Company Logo" />
             <div class="title-container">
-                <h1>ABC Support Desk</h1>
+                <h1>Apexx Solutions Admin Panel</h1>
             </div>
         </div>
 
@@ -124,7 +124,7 @@ $result = $conn->query($sql);
       <button type="submit">Search</button>
     </div>
     <select id="mySelect" style="border: 2px solid black; ">
-    <option value="0">Ticket ID</option>
+
     <option value="1">Subject</option>
     <option value="2">Message</option>
     <option value="3">Category</option>
@@ -160,7 +160,7 @@ $result = $conn->query($sql);
     <script src="../js/ticket-search.js"></script>
 
      <footer>
-      <p>© 2024 ABC Support Desk. All rights reserved.</p>
+      <p>© 2024 Apexx Solutions. All rights reserved.</p>
       <div class="social-media-icons">
         <div class="icon-container">
           <a href="https://www.facebook.com/yourpage"

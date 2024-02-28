@@ -89,8 +89,10 @@ mysqli_close($connection);
                     </div>
                 </div>
             </div>
-        </nav></header>
-<body>
+        </nav></header><br>
+         <h2 style="text-align: center;">Update Profile</h2>
+
+
     <?php if (isset($error_message)) : ?>
         <p><?php echo $error_message; ?></p>
     <?php endif; ?>

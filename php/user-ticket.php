@@ -26,6 +26,7 @@ $username = $_SESSION['username'];// Access username from session
     <link rel="stylesheet" href="../css/user-ticket.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/e1d03506f8.js" crossorigin="anonymous"></script>
+    
 </head>
 
 <body>
@@ -41,6 +42,7 @@ $username = $_SESSION['username'];// Access username from session
                         <li><a href="../php/home.php">Home</a></li>
                         <li><a href="../php/knowledgebase.php">Knowledgebase</a></li>
                         <li><a href="../php/user-ticket.php">Tickets</a></li>
+                        <li><a href="../php/user-feedback.php">Feedback</a></li>
                         <li><a href="about.html">AboutUS</a></li>
                         <li><a href="contact-us.html">Contact Us</a></li>
                     </ul>
@@ -57,7 +59,8 @@ $username = $_SESSION['username'];// Access username from session
                     </div>
                 </div>
             </div>
-        </nav><br>
+        </nav>
+       
         <!-- Modify the HTML section to include a form -->
 <div class="main-section">
     <h2>Create New Ticket</h2>

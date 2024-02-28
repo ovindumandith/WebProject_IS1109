@@ -66,7 +66,8 @@ $username = $_SESSION['username']; // Access username from session
                     <ul class="navbar-menu-names">
                         <li><a href="../php/home.php">Home</a></li>
                         <li><a href="../php/knowledgebase.php">Knowledgebase</a></li>
-                        <li><a href="tickets.html">Tickets</a></li>
+                        <li><a href="../php/user-ticket.php">Tickets</a></li>
+                        <li><a href="../php/user-feedback.php">Feedback</a></li>
                         <li><a href="about.html">AboutUS</a></li>
                         <li><a href="contact-us.html">Contact Us</a></li>
                     </ul>
@@ -83,7 +84,8 @@ $username = $_SESSION['username']; // Access username from session
                     </div>
                 </div>
             </div>
-        </nav><br>
+        </nav><br><br>
+        <h2 style="text-align: center;">Knowledge Base</h2>
 
     <!-- Search bar -->
 <div class="search-container">
@@ -113,7 +115,7 @@ $username = $_SESSION['username']; // Access username from session
     <!-- Main content -->
     <!-- Your existing HTML content -->
 
-    <footer>
+     <footer>
         <div class="footer-top">    <!--//Footer top.........-->
 
             <div class="footer-top-left">
