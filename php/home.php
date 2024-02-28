@@ -44,10 +44,10 @@ $username = $_SESSION['username'];// Access username from session
                 </div>
                 <div class="menu-and-userimage-box">
                     <ul class="navbar-menu-names">
-                        <li><a href="home-new.html">Home</a></li>
-                        <li><a href="knowledgebase.html">Knowledgebase</a></li>
-                        <li><a href="tickets.html">Tickets</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="../php/home.php">Home</a></li>
+                        <li><a href="../php/knowledgebase.php">Knowledgebase</a></li>
+                        <li><a href="../php/user-ticket.php">Tickets</a></li>
+                        <li><a href="about.html">AboutUS</a></li>
                         <li><a href="contact-us.html">Contact Us</a></li>
                     </ul>
                     <div class="userimage">

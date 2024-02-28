@@ -1,0 +1,48 @@
+.search-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+  margin-top: 20px;
+}
+
+.search-container input[type="text"] {
+  padding: 15px; /* Increase padding */
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Increase border radius */
+  width: 500px; /* Increase width */
+  margin-right: 10px;
+}
+
+.search-container button {
+  padding: 15px 30px; /* Increase padding */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px; /* Increase border radius */
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background-color: #0056b3;
+}
+.articles-container {
+  max-width: 800px; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the container */
+  padding: 20px; /* Add padding for spacing */
+}
+
+.articles ul {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0;
+}
+
+.articles li {
+  margin-bottom: 20px; /* Add margin between articles */
+  border: 1px solid #ccc; /* Add border for each article */
+  border-radius: 8px;
+  padding: 20px; /* Add padding for spacing */
+}
+
+.articles h3 {
+  margin-top: 0; /* Remove top margin for heading */
+}

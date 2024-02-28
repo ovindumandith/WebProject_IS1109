@@ -1,0 +1,52 @@
+.main-section {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 2px solid #ccc; /* Increased border thickness */
+  border-radius: 10px; /* Rounded corners */
+  background-color: #f9f9f9;
+}
+
+.main-section input[type="text"],
+.main-section textarea,
+.main-section select {
+  width: 100%;
+  padding: 8px; /* Reduced padding */
+  margin-bottom: 15px; /* Reduced margin */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.main-section select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>');
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: center;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.main-section input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.main-section input[type="submit"]:hover {
+  background-color: #45a049;
+}

@@ -23,7 +23,7 @@
             </div>
             <div class="menu-box">
                 <ul class="landing-navbar-menu-names">
-                    <li><a href="#">About</a></li>
+                    <li><a href="#">AboutUS</a></li>
                     <li><a href="#">Downloads</a></li>
                     <li><a href="#">FAQs</a></li>
                     <li><a href="#">Contact</a></li>
@@ -38,11 +38,10 @@
                 <h3>Make it smarter</h3>
             </div>
             
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                Quidem harum assumenda minus esse aut cumque eligendi 
-                reprehenderit expedita maiores libero repudiandae saepe 
-                iusto vitae architecto, dignissimos beatae accusantium 
-                in veritatis.</p>
+            <p>
+"Welcome to our technical support system company, where reliability meets expertise.
+ We specialize in providing seamless solutions for all your tech-related queries, ensuring your systems run smoothly around the clock.
+  Trust us to be your dedicated partner in navigating the digital landscape with ease."</p>
                 <form action="index.php" method="post">
                     <button id="signup-button" type="submit" name="signup"><span>+</span>Join Us</button>
                     <button id="login-button" type="submit" name="login">Login</button>

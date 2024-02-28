@@ -1,0 +1,129 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 10px;
+    padding: 0;
+    background-color: lightblue;
+}
+.topbar p{
+    display: flex;
+    position: absolute;
+    color: whitesmoke;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px; 
+    left:45%;
+}
+.menu-icon{
+    position: absolute;
+    right: 0%;  
+ }
+.mid-container{
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    background-color: #88bdbc;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.mid-container .nav-bar{
+    margin-bottom: 5px; 
+    text-align: center;
+    Background-color: teal;
+    overflow: auto;
+    width: 100%;  
+    border-radius: 10px; 
+    padding: 50px 0px;  
+}  
+#searchInput{
+    width: 80%;
+    padding: 15px 10px;
+    margin: 20px 0px 20px 20px;
+    border-radius: 10px;
+}  
+#search-bar{
+    display: flex;
+    margin-bottom: 20px;
+}
+#search-button{
+    padding: 10px 45px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}
+#search-button:hover{
+    transform: scale(1.05);
+}
+.down-container{
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    padding: 5px;
+    background-color: #88bdbc;
+    justify-content: space-between;  
+}
+h1{
+    text-align: center;
+}
+.book-logo{
+    margin-top: -15px;
+}
+.book-logo img{
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 3px solid;
+    border-radius: 50%;   
+    position: relative;
+    cursor:pointer;
+}
+.book-logo img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+#articlesList{
+    list-style-type: none;
+    padding: 0;
+} 
+.article-category{
+    background-color: teal;
+    padding: 5px;
+    margin: 0px 100px;
+    border-radius: 0px;   
+}
+.article{
+    background-color: whitesmoke;
+    padding: 10px;
+    margin: 10px 120px;
+    border-radius: 5px;
+}
+.article:hover{
+    transform: scale(1.05);
+}
+.bottom-container{
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    background-color: #88bdbc;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.downbar{
+    text-align: center;
+    Background-color: teal;
+    overflow: auto;
+    width: 100%;  
+    border-radius: 10px;   
+    padding: 10px;
+}
+.downbar p{    
+    color: whitesmoke;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    margin-bottom: 5px;   
+}  
