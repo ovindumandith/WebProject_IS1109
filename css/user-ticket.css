@@ -2,8 +2,8 @@
   max-width: 800px;
   margin: 50px auto;
   padding: 20px;
-  border: 2px solid #ccc; /* Increased border thickness */
-  border-radius: 10px; /* Rounded corners */
+  border: 2px solid #ccc;
+  border-radius: 10px;
   background-color: #f9f9f9;
 }
 
@@ -11,8 +11,8 @@
 .main-section textarea,
 .main-section select {
   width: 100%;
-  padding: 8px; /* Reduced padding */
-  margin-bottom: 15px; /* Reduced margin */
+  padding: 8px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
@@ -32,8 +32,7 @@
   background-position-x: 95%;
   background-position-y: center;
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  /* Your existing select styles */
 }
 
 .main-section input[type="submit"] {
@@ -49,4 +48,29 @@
 
 .main-section input[type="submit"]:hover {
   background-color: #45a049;
+}
+
+/* Sticky footer */
+footer {
+  width: 100%;
+  padding: 30px 200px;
+  background: rgba(53, 53, 206, 0.8);
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  font-family: Gotham-book, Calibri, Helvetica Neue, HelveticaNeue, Arial,
+    sans-serif;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+.main-section textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
 }

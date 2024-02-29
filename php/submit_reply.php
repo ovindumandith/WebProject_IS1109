@@ -21,18 +21,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = $_POST['message'];
     $category = $_POST['category'];
     $priority = $_POST['priority'];
+    $username = $_POST['username'];
     $reply = $_POST['reply'];
 
     // Prepare an SQL statement for inserting the reply into the database
-    $stmt = $conn->prepare("INSERT INTO reply_ticket (ticket_replyID, subject, message, category, priority, reply) VALUES (?, ?, ?, ?, ?, ?)");
+// Prepare an SQL statement for inserting the reply into the database
+$stmt = $conn->prepare("INSERT INTO reply_ticket (ticket_replyID, subject, message, category, priority, username, reply) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
-    // Check if the prepare was successful
-    if ($stmt === false) {
-        die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
-    }
+// Check if the prepare was successful
+if ($stmt === false) {
+    die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
+}
 
-    // Bind the parameters to the SQL query
-    $stmt->bind_param("isssss", $ticket_replyID, $subject, $message, $category, $priority, $reply);
+// Bind the parameters to the SQL query
+$stmt->bind_param("issssss", $ticket_replyID, $subject, $message, $category, $priority, $username, $reply);
+
 
     // Execute the SQL statement
     if ($stmt->execute()) {

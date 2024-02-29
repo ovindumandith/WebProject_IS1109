@@ -59,33 +59,35 @@ $username = $_SESSION['username'];// Access username from session
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav><br>
        
         <!-- Modify the HTML section to include a form -->
-<div class="main-section">
-    <h2>Create New Ticket</h2>
-    <form action="process_ticket.php" method="POST">
-        <label for="subject">Subject:</label><br>
-        <input type="text" id="subject" name="subject" required><br>
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" required></textarea><br>
-        <label for="category">Category:</label><br>
-        <select id="category" name="category" required>
-            <option value="General">General</option>
-            <option value="Technical">Technical</option>
-            <option value="Billing">Billing</option>
-            <option value="Hardware">Hardware</option>
-            
-        </select><br>
-        <label for="priority">Priority:</label><br>
-        <select id="priority" name="priority" required>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-        </select><br><br>
-        <input type="submit" value="Submit">
-    </form>
+<div class="container">
+    <div class="main-section">
+        <h2 style="text-align: center;">Create New Ticket</h2><br>
+        <form action="process_ticket.php" method="POST">
+            <label for="subject">Subject:</label><br>
+            <input type="text" id="subject" name="subject" required><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" required></textarea><br>
+            <label for="category">Category:</label><br>
+            <select id="category" name="category" required>
+                <option value="General">General</option>
+                <option value="Technical">Technical</option>
+                <option value="Billing">Billing</option>
+                <option value="Hardware">Hardware</option>
+            </select><br>
+            <label for="priority">Priority:</label><br>
+            <select id="priority" name="priority" required>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </div>
+
 
 <!-- PHP code to handle form submission -->
 

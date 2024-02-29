@@ -137,7 +137,7 @@ $result = $conn->query($sql);
     <?php
     if ($result->num_rows > 0) {
         echo "<table id='myTable'>";
-        echo "<tr><th>Ticket ID</th><th>Subject</th><th>Message</th><th>Category</th><th>Priority</th><th class='action-column'>Actions</th></tr>";
+        echo "<tr><th>Ticket ID</th><th>Subject</th><th>Message</th><th>Category</th><th>Priority</th><th>Username</th><th class='action-column'>Actions</th></tr>";
         // Output data of each row
         while($row = $result->fetch_assoc()) {
             echo "<tr>";
@@ -146,8 +146,10 @@ $result = $conn->query($sql);
             echo "<td>".$row["message"]."</td>";
             echo "<td>".$row["category"]."</td>";
             echo "<td>".$row["priority"]."</td>";
+            echo "<td>".$row["username"]."</td>";
             echo "<td class='action-column'>";
-            echo "<a href='../php/reply_ticket.php?id=".$row["ticket_ID"]."&subject=".$row["subject"]."&message=".$row["message"]."&category=".$row["category"]."&priority=".$row["priority"]."' class='action-button'>Reply</a>";
+            echo "<a href='../php/reply_ticket.php?id=".$row["ticket_ID"]."&subject=".$row["subject"]."&message=".$row["message"]."&category=".$row["category"]."&priority=".$row["priority"]."&username=".$row["username"]."' class='action-button'>Reply</a>";
+
             echo "<a href='../php/delete_ticket.php?id=".$row["ticket_ID"]."' class='action-button' style='background-color: #dc3545;'>Delete</a>";
             echo "</td>";
             echo "</tr>";

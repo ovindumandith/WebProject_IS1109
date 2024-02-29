@@ -1,12 +1,12 @@
 <?php
 // Database connection parameters
 $servername = "localhost";
-$username = "root";
+$username1 = "root";
 $password = "";
 $dbname = "web_test";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username1, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
@@ -19,7 +19,25 @@ $subject = $_GET['subject'];
 $message = $_GET['message'];
 $category = $_GET['category'];
 $priority = $_GET['priority'];
+$username = $_GET['username'];
 
+// Get reply from form submission
+/*if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $reply = $_POST['reply'];
+
+    // Insert ticket details and reply into reply_ticket table
+    $sql = "INSERT INTO reply_ticket (ticket_ID, subject, message, category, priority, username, reply)
+            VALUES ('$ticket_ID', '$subject', '$message', '$category', '$priority', '$username', '$reply')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Reply submitted successfully!";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}*/
+
+// Close the database connection
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +83,7 @@ $priority = $_GET['priority'];
     </nav>
     <h2>Reply to Ticket</h2>
 
-    <form method="post" action="submit_reply.php">
+    <form method="post" action="../php/submit_reply.php">
         <label for="ticket_ID">Ticket ID:</label>
         <input type="text" id="ticket_ID" name="ticket_ID" value="<?php echo $ticket_ID; ?>" readonly><br>
 
@@ -80,6 +98,9 @@ $priority = $_GET['priority'];
 
         <label for="priority">Priority:</label>
         <input type="text" id="priority" name="priority" value="<?php echo $priority; ?>" readonly><br>
+        
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="<?php echo $username; ?>" readonly><br>
 
         <label for="reply">Your Reply:</label>
         <textarea id="reply" name="reply" required></textarea><br>
@@ -105,4 +126,3 @@ $priority = $_GET['priority'];
     </footer>
   </body>
 </html>
-

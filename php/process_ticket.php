@@ -1,45 +1,39 @@
 <?php
-session_start();
+session_start(); // Start the session
 
+// Check if user is logged in
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: login.php"); // Redirect to login page if not logged in
     exit;
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "web_test";
+// Include your database connection file
+include_once "../include/connection.php";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Retrieve ticket details from form submission
+// Retrieve ticket details from the form
 $subject = $_POST['subject'];
 $message = $_POST['message'];
 $category = $_POST['category'];
 $priority = $_POST['priority'];
 
-// Insert ticket details into the database
-$query = "INSERT INTO ticket (subject, message, category, priority) VALUES (?, ?, ?, ?)";
-$stmt = $conn->prepare($query);
+// Retrieve username from session
+$username = $_SESSION['username'];
 
-if ($stmt) {
-    $stmt->bind_param("ssss", $subject, $message, $category, $priority);
-    $stmt->execute();
-    $stmt->close();
-    
-    // Redirect back to the home page
-    header("Location: ../php/home.php");
-    exit;
+// Prepare SQL statement to insert ticket details into the database
+$sql = "INSERT INTO ticket (subject, message, category, priority, username) VALUES ('$subject', '$message', '$category', '$priority', '$username')";
+
+// Execute the SQL statement
+if (mysqli_query($connection, $sql)) {
+    // Display alert box
+    echo "<script>alert('Ticket created successfully');</script>";
+    // Log to console for debugging
+    echo "<script>console.log('Alert displayed');</script>";
+    // Redirect user to user-ticket.php
+    header("Location: ../php/user-ticket.php");
 } else {
-    echo "Error: " . $conn->error;
+    echo "Error: " . $sql . "<br>" . mysqli_error($connection);
 }
 
-$conn->close();
+// Close database connection
+mysqli_close($connection);
 ?>
