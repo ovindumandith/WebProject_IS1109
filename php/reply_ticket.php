@@ -1,16 +1,29 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
+    header("Location: login.php");
+    exit;
+}
+
 // Database connection parameters
 $servername = "localhost";
-$username1 = "root";
+$username = "root";
 $password = "";
 $dbname = "web_test";
 
 // Create connection
-$conn = new mysqli($servername, $username1, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if ticket details are passed in URL parameters
+if (!isset($_GET['id']) || !isset($_GET['subject']) || !isset($_GET['message']) || !isset($_GET['category']) || !isset($_GET['priority']) || !isset($_GET['username'])) {
+    // Handle case where ticket details are not provided
+    die("Ticket details not provided");
 }
 
 // Get ticket details from URL parameters
@@ -21,23 +34,6 @@ $category = $_GET['category'];
 $priority = $_GET['priority'];
 $username = $_GET['username'];
 
-// Get reply from form submission
-/*if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $reply = $_POST['reply'];
-
-    // Insert ticket details and reply into reply_ticket table
-    $sql = "INSERT INTO reply_ticket (ticket_ID, subject, message, category, priority, username, reply)
-            VALUES ('$ticket_ID', '$subject', '$message', '$category', '$priority', '$username', '$reply')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Reply submitted successfully!";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-}*/
-
-// Close the database connection
-$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -55,14 +51,20 @@ $conn->close();
       <div class="logo-container">
         <img src="../resources/logo.png" alt="Company Logo" />
         <div class="title-container">
-          <h1>ABC Support Desk</h1>
+          <h1>Appex Solutions Admin Panel </h1>
         </div>
       </div>
 
       <!-- Profile Icon -->
-      <div class="profile-icon-container">
-        <a href="#"><img src="../resources/user.png" alt="Profile Icon" /></a>
-      </div>
+<div class="profile-icon-container">
+    <img src="../resources/user.png" alt="Profile Icon" />
+    <div class="profile-options">
+        <a href="admin_profile.php">Admin Profile</a>
+<form action="../php/admin_logout.php" method="post">
+    <button type="submit" name="logout">Logout</button>
+</form>
+    </div>
+</div>
     </header>
 
     <!-- Navigation Bar -->
@@ -108,7 +110,7 @@ $conn->close();
         <input type="submit" value="Submit Reply">
     </form><br>
     <footer>
-      <p>© 2024 ABC Support Desk. All rights reserved.</p>
+      <p>© 2024 Apexx Solutions. All rights reserved.</p>
       <div class="social-media-icons">
         <div class="icon-container">
           <a href="https://www.facebook.com/yourpage"

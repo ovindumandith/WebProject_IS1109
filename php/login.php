@@ -1,45 +1,50 @@
 <?php
-    session_start();
-    require_once('../include/connection.php'); 
-?>
+session_start();
+require_once('../include/connection.php');
 
-<?php 
+if(isset($_POST['login'])){
+    $Username = $_POST['username'];
+    $Password = $_POST['password'];
 
-    if(isset($_POST['login'])){
-        
-        $Username = $_POST['username'];
-        $Password = $_POST['password'];
-        // $login_check = false;
+    // Prepare user query
+    $query_user = "SELECT * FROM userdetails WHERE username=? LIMIT 1";
+    $stmt_user = mysqli_prepare($connection, $query_user);
+    mysqli_stmt_bind_param($stmt_user, "s", $Username);
+    mysqli_stmt_execute($stmt_user);
+    $result_user = mysqli_stmt_get_result($stmt_user);
 
-        $query_user = "SELECT * FROM userdetails WHERE username='{$Username}'";
-        $query_admin = "SELECT * FROM admindetails WHERE username='{$Username}'";
+    // Prepare admin query
+    $query_admin = "SELECT * FROM admindetails WHERE username=? LIMIT 1";
+    $stmt_admin = mysqli_prepare($connection, $query_admin);
+    mysqli_stmt_bind_param($stmt_admin, "s", $Username);
+    mysqli_stmt_execute($stmt_admin);
+    $result_admin = mysqli_stmt_get_result($stmt_admin);
 
-        $result_set_user = mysqli_query($connection, $query_user);
-        $result_set_admin = mysqli_query($connection, $query_admin);
+    // Check user authentication
+    if($record_user = mysqli_fetch_assoc($result_user)){
+        if($record_user['password'] == $Password) {
+            $_SESSION['username'] = $record_user['username'];
+            $_SESSION['role'] = 'user';
+            header("Location:../php/home.php");
+            exit;
+        }   
+    }
 
-        if($record_user =  mysqli_fetch_assoc($result_set_user)){
-            if($record_user['password'] == $Password) {
-
-                $_SESSION['username'] = $record_user['username'];
-                $_SESSION['role'] = 'user';
-                header("Location: home.php");
-                exit;
-            }   
-        }else if($record_admin =  mysqli_fetch_assoc($result_set_admin)){
-            if($record_admin['password'] == $Password) {
-
-                $_SESSION['username'] = $record_admin['username'];
-                $_SESSION['role'] = 'admin';
-                header("Location: dashboard.php");
-                exit;
-            }
+    // Check admin authentication
+    if($record_admin = mysqli_fetch_assoc($result_admin)){
+        if($record_admin['password'] == $Password) {
+            $_SESSION['username'] = $record_admin['username'];
+            $_SESSION['role'] = 'admin';
+            header("Location:../php/admin_home.php");
+            exit;
         }
+    }
 
-        echo " alert('Your login failed! Username or password is incorrect'); ";    
-    } 
+    // Display error message if login fails
+    $error_message = "Your login failed! Username or password is incorrect";
+} 
+mysqli_close($connection);
 ?>
-
-<?php mysqli_close($connection); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,6 +75,9 @@
                     <h4>Don't you have an account? <a href="register.php" id="register-link">Register</a></h4> 
                 </div>  
             </form>
+                <?php if(isset($error_message)): ?>
+        <div class="error-message"><?php echo $error_message; ?></div>
+    <?php endif; ?>
         </div>
 
         <div class="rightbox"> </div>

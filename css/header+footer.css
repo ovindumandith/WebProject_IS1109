@@ -9,7 +9,7 @@ body {
 }
 
 header {
-  background-color: #4169e1;
+  background-color: #88bdbc;
   color: #ffffff;
   padding: 20px;
   display: flex;
@@ -110,4 +110,76 @@ footer {
 .social-media-icons a:hover img {
   transform: scale(1.2);
   filter: invert(1) hue-rotate(90deg);
+}
+.profile-icon-container {
+  position: relative;
+  margin-right: 100px;
+  display: inline-block;
+}
+
+.profile-icon-container img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile-options {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: -20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1;
+  border-radius: 8px;
+  min-width: 140px;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+.profile-options a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.profile-options a:hover {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.profile-icon-container:hover .profile-options {
+  display: block;
+}
+
+/* Keep dropdown menu visible when hovering over it */
+.profile-options:hover {
+  display: block;
+}
+
+/* Style for logout button */
+.profile-options button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #ff6961;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.profile-options button[type="submit"]:hover {
+  background-color: #ff5447;
 }

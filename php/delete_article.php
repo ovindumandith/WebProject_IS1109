@@ -1,9 +1,15 @@
 <?php
+session_start();
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
+    header("Location: login.php");
+    exit;
+}
+
 // Database connection parameters
-$servername = "localhost"; // Change this to your MySQL server hostname
-$username = "root"; // Change this to your MySQL username
-$password = ""; // Change this to your MySQL password
-$dbname = "web_test"; // Change this to your MySQL database name
+$servername = "localhost"; 
+$username = "root"; 
+$password = ""; 
+$dbname = "web_test"; 
 
 // Check if article ID is provided
 if(isset($_GET['id'])) {
@@ -17,15 +23,31 @@ if(isset($_GET['id'])) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // SQL query to delete the article with the given ID
-    $sql = "DELETE FROM articles WHERE articleID = $articleID";
+    // Prepare a delete statement
+    $sql = "DELETE FROM articles WHERE articleID = ?";
 
-    if ($conn->query($sql) === TRUE) {
-        echo "Record deleted successfully";
-    } else {
-        echo "Error deleting record: " . $conn->error;
+    if($stmt = $conn->prepare($sql)){
+        // Bind variables to the prepared statement as parameters
+        $stmt->bind_param("i", $articleID);
+
+        // Display confirmation dialog
+        echo "<script>
+                var confirmed = confirm('Are you sure you want to delete this article?');
+                if(confirmed) {
+                    // Attempt to execute the prepared statement
+                    if(" . $stmt->execute() . ") {
+                        alert('Article deleted successfully');
+                        window.location.href = '../php/view_articles.php';
+                    } else {
+                        alert('Error deleting article');
+                    }
+                } else {
+                    window.location.href = '../php/view_articles.php';
+                }
+              </script>";
+        // Close statement
+        $stmt->close();
     }
-
     // Close connection
     $conn->close();
 } else {

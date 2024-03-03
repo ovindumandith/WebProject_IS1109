@@ -24,7 +24,13 @@
 
       <!-- Profile Icon -->
       <div class="profile-icon-container">
-        <a href="#"><img src="../resources/user.png" alt="Profile Icon" /></a>
+        <img src="../resources/user.png" alt="Profile Icon" />
+        <div class="profile-options">
+          <a href="admin_profile.php">Admin Profile</a>
+          <form action="home.php" method="post">
+            <button type="submit" name="logout">Logout</button>
+          </form>
+        </div>
       </div>
     </header>
 

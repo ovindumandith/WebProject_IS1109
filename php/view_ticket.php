@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
+    header("Location: login.php");
+    exit;
+}
+
 // Database connection parameters
 $servername = "localhost";
 $username = "root";
@@ -16,8 +22,8 @@ if ($conn->connect_error) {
 // SQL query to select all records from ticket table
 $sql = "SELECT * FROM ticket";
 $result = $conn->query($sql);
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +68,7 @@ $result = $conn->query($sql);
         .action-button {
             padding: 6px 10px;
             border: none;
-            background-color: #007bff;
+            background-color:#007bff;
             color: #fff;
             cursor: pointer;
             border-radius: 4px;
@@ -98,9 +104,16 @@ $result = $conn->query($sql);
         </div>
 
         <!-- Profile Icon -->
-        <div class="profile-icon-container">
-            <a href="#"><img src="../resources/user.png" alt="Profile Icon" /></a>
-        </div>
+<div class="profile-icon-container">
+    <img src="../resources/user.png" alt="Profile Icon" />
+    <div class="profile-options">
+        <a href="../php/admin_profile.php">Admin Profile</a>
+<form action="../php/admin_logout.php" method="post">
+    <button type="submit" name="logout">Logout</button>
+</form>
+    </div>
+</div>
+
     </header>
 
     <!-- Navigation Bar -->

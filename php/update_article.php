@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
+    header("Location: login.php");
+    exit;
+}
 // Database connection parameters
 $servername = "localhost"; 
 $username = "root"; 
@@ -99,9 +104,16 @@ input[type="submit"]:hover {
       </div>
 
       <!-- Profile Icon -->
-      <div class="profile-icon-container">
-        <a href="#"><img src="../resources/user.png" alt="Profile Icon" /></a>
-      </div>
+<div class="profile-icon-container">
+    <img src="../resources/user.png" alt="Profile Icon" />
+    <div class="profile-options">
+        <a href="admin_profile.php">Admin Profile</a>
+<form action="../php/admin_logout.php" method="post">
+    <button type="submit" name="logout">Logout</button>
+</form>
+    </div>
+</div>
+
     </header>
 
     <!-- Navigation Bar -->
@@ -124,14 +136,15 @@ input[type="submit"]:hover {
 
 <h2>Update Article</h2>
 
-<form action="update_article_process.php" method="POST">
+<form action="../php/update_article_process.php" method="POST">
     <input type="hidden" name="articleID" value="<?php echo $articleID; ?>">
     <label for="heading">Heading:</label><br>
     <input type="text" id="heading" name="heading" value="<?php echo $heading; ?>"><br><br>
     <label for="description">Description:</label><br>
     <textarea id="description" name="description" rows="4" cols="50"><?php echo $description; ?></textarea><br><br>
-    <input type="submit" value="Update">
+    <input type="submit" name="update" value="Update">
 </form><br>
+
 <footer>
       <p>© 2024 ABC Support Desk. All rights reserved.</p>
       <div class="social-media-icons">

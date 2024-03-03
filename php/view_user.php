@@ -42,7 +42,7 @@
         .action-button {
             padding: 6px 10px;
             border: none;
-            background-color: #007bff;
+            background-color:  #dc3545;
             color: #fff;
             cursor: pointer;
             border-radius: 4px;
@@ -78,9 +78,16 @@
         </div>
 
         <!-- Profile Icon -->
-        <div class="profile-icon-container">
-            <a href="#"><img src="../resources/user.png" alt="Profile Icon" /></a>
-        </div>
+<div class="profile-icon-container">
+    <img src="../resources/user.png" alt="Profile Icon" />
+    <div class="profile-options">
+        <a href="../php/admin_profile.php">Admin Profile</a>
+<form action="../php/admin_logout.php" method="post">
+    <button type="submit" name="logout">Logout</button>
+</form>
+    </div>
+</div>
+
     </header>
 
     <!-- Navigation Bar -->
@@ -115,40 +122,44 @@
         </thead>
         <tbody>
             <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "web_test";
 
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "web_test";
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+$sql = "SELECT * FROM userdetails";
+$result = $conn->query($sql);
 
-            // SQL to fetch feedback data
-            $sql = "SELECT * FROM userdetails";
-            $result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    // Output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>".$row["userID"]."</td>";
+        echo "<td>".$row["firstName"]."</td>";
+        echo "<td>".$row["username"]."</td>";
+        echo "<td>".$row["email"]."</td>";
+        echo "<td class='action-column'>";
+        echo "<form method='post' action='delete_user.php'>";
+        echo "<input type='hidden' name='user_id' value='".$row["userID"]."'>";
+        echo "<button type='submit' class='action-button' onclick='return confirm(\"Are you sure you want to delete this user?\")'>Delete</button>";
+        echo "</form>";
+        echo "</td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='5'>No records found</td></tr>";
+}
+$conn->close();
+?>
 
-            if ($result->num_rows > 0) {
-                // Output data of each row
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>".$row["userID"]."</td>";
-                    echo "<td>".$row["firstName"]."</td>";
-                    echo "<td>".$row["username"]."</td>";
-                    echo "<td>".$row["email"]."</td>";
-                    echo "<td class='action-column'><button class='action-button' onclick='deleteUser(".$row["userID"].")'>Delete</button></td>";
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='5'>No records found</td></tr>";
-            }
-            $conn->close();
-            ?>
         </tbody>
     </table>
 

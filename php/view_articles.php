@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
+    header("Location: login.php");
+    exit;
+}
+
 // Database connection parameters
 $servername = "localhost"; 
 $username = "root"; 
@@ -75,6 +81,16 @@ $conn->close();
     .action-button:hover {
         background-color: #0056b3;
     }
+            .delete-button {
+            background-color: #dc3545; /* Red color */
+            color: #fff; /* White text color */
+        }
+
+        /* Define update button style */
+        .update-button {
+            background-color: #007bff; /* Blue color */
+            color: #fff; /* White text color */
+        }
 
     </style>
 </head>
@@ -89,9 +105,16 @@ $conn->close();
       </div>
 
       <!-- Profile Icon -->
-      <div class="profile-icon-container">
-        <a href="#"><img src="../resources/user.png" alt="Profile Icon" /></a>
-      </div>
+<div class="profile-icon-container">
+    <img src="../resources/user.png" alt="Profile Icon" />
+    <div class="profile-options">
+        <a href="admin_profile.php">Admin Profile</a>
+<form action="../php/admin_logout.php" method="post">
+    <button type="submit" name="logout">Logout</button>
+</form>
+    </div>
+</div>
+
     </header>
 
     <!-- Navigation Bar -->
@@ -126,9 +149,9 @@ if ($result->num_rows > 0) {
         echo "<td>".$row["articleID"]."</td>";
         echo "<td>".$row["heading"]."</td>";
         echo "<td>".$row["description"]."</td>";
-        echo "<td class='action-column'><form action='../php/update_article.php' method='GET'><input type='hidden' name='id' value='".$row["articleID"]."'><button type='submit' class='action-button'>Update</button></form></td>";
-        echo "<td class='action-column'><form action='../php/delete_article.php' method='GET'><input type='hidden' name='id' value='".$row["articleID"]."'><button type='submit' class='action-button'>Delete</button></form></td>";
-        echo "</tr>";
+echo "<td class='action-column'><form action='../php/update_article.php' method='GET'><input type='hidden' name='id' value='".$row["articleID"]."'><button type='submit' class='action-button update-button'>Update</button></form></td>";
+            echo "<td class='action-column'><form action='../php/delete_article.php' method='GET' onsubmit='return confirmDelete()'><input type='hidden' name='id' value='".$row["articleID"]."'><button type='submit' class='action-button delete-button'>Delete</button></form></td>";
+            echo "</tr>";
     }
     echo "</table>";
 } else {

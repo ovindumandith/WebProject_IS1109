@@ -1,8 +1,16 @@
+<?php
+session_start();
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
+    header("Location: login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap"
@@ -10,10 +18,9 @@
 
     <link href="../css/header+footer.css" rel="stylesheet" type="text/css" />
     <link href="../css/admin_home.css" rel="stylesheet" type="text/css" />
-    <title>Your Page Title</title>
-  </head>
-
-  <body>
+    <title>Apexx Solutions Admin Panel</title>
+</head>
+<body>
     <header>
       <!-- Company Logo and Title -->
       <div class="logo-container">
@@ -24,9 +31,16 @@
       </div>
 
       <!-- Profile Icon -->
-      <div class="profile-icon-container">
-        <a href="../php/admin_profile.php"><img src="../resources/user.png" alt="Profile Icon" /></a>
-      </div>
+<div class="profile-icon-container">
+    <img src="../resources/user.png" alt="Profile Icon" />
+    <div class="profile-options">
+        <a href="../php/admin_profile.php">Admin Profile</a>
+        <form action="home.php" method="post">
+            <button type="submit" name="logout">Logout</button>
+        </form>
+    </div>
+</div>
+
     </header>
 
     <!-- Navigation Bar -->

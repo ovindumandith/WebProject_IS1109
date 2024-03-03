@@ -98,9 +98,16 @@ $result = $conn->query($sql);
         </div>
 
         <!-- Profile Icon -->
-        <div class="profile-icon-container">
-            <a href="#"><img src="../resources/user.png" alt="Profile Icon" /></a>
-        </div>
+<div class="profile-icon-container">
+    <img src="../resources/user.png" alt="Profile Icon" />
+    <div class="profile-options">
+       <a href="../php/admin_profile.php">Admin Profile</a>
+<form action="../php/admin_logout.php" method="post">
+    <button type="submit" name="logout">Logout</button>
+</form>
+    </div>
+</div>
+
     </header>
 
     <!-- Navigation Bar -->

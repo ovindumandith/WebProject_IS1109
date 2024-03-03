@@ -1,25 +1,26 @@
 <?php
 session_start(); // Start the session
 
-if (!isset($_SESSION['username'])) // Check if user is logged in
-{
-    header("Location: login.php");// Redirect to login page if not logged in
+if (!isset($_SESSION['username'])) { // Check if user is logged in
+    header("Location: login.php"); // Redirect to login page if not logged in
     exit;
-}
-else {
+} else if ($_SESSION['role'] !== 'user') { // Check if user role is not customer
+    header("Location: login.php"); // Redirect to login page if user role is not customer
+    exit;
+} else {
     if (isset($_POST["profile"])) {
         header("Location: profile.php");
-    }
-    else if (isset($_POST["logout"])) {
+        exit;
+    } else if (isset($_POST["logout"])) {
         require_once('../include/process-logout.php');
+        exit;
     }
 }
 
-
-
-$username = $_SESSION['username'];// Access username from session
+$username = $_SESSION['username']; // Access username from session
 // $email = $_SESSION['email'];
 ?>
+
 
 
 
