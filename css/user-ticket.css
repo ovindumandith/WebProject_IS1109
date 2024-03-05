@@ -1,73 +1,41 @@
+.container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .main-section {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
   background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-.main-section input[type="text"],
-.main-section textarea,
-.main-section select {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 16px;
+.form-title {
+  text-align: center;
 }
 
-.main-section select {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 16px;
-  background-image: url('data:image/svg+xml;utf8,<svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>');
-  background-repeat: no-repeat;
-  background-position-x: 95%;
-  background-position-y: center;
-  appearance: none;
-  /* Your existing select styles */
+.form-group {
+  margin-bottom: 20px;
 }
 
-.main-section input[type="submit"] {
+label {
+  font-weight: bold;
+}
+
+.form-input,
+.form-select {
   width: 100%;
   padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.main-section input[type="submit"]:hover {
-  background-color: #45a049;
-}
-
-.main-section textarea {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 16px;
 }
 
-/* New button container */
-.button-container {
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* New button styles */
-.button-container button {
+.submit-button,
+.view-button {
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
@@ -77,6 +45,7 @@
   transition: background-color 0.3s;
 }
 
-.button-container button:hover {
+.submit-button:hover,
+.view-button:hover {
   background-color: #0056b3;
 }

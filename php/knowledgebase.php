@@ -52,6 +52,51 @@ $username = $_SESSION['username']; // Access username from session
     <link rel="stylesheet" href="../css/knowledgebase.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/e1d03506f8.js" crossorigin="anonymous"></script>
+    <style>
+.articles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.article {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article:hover {
+  background-color: #f5f5f5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.article h3 {
+  margin-top: 0;
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.article p {
+  display: none;
+}
+
+.article:hover p {
+  display: block;
+}
+
+.article:hover:not(:hover) p {
+  display: none;
+}
+
+
+    </style> 
+    
 </head>
 
 <body>
@@ -90,27 +135,21 @@ $username = $_SESSION['username']; // Access username from session
     <!-- Search bar -->
 <div class="search-container">
     <input type="text" id="myInput" placeholder="Search..." />
-    <button type="button" onclick="searchArticles()">Search</button>
 </div>
+
+
 
     <!-- Articles -->
  <!-- Articles -->
     <div class="articles-container">
-        <div class="articles">
-            <?php if (!empty($articles)) : ?>
-                <ul>
-                    <?php foreach ($articles as $article) : ?>
-                        <li>
-                            <h3><?php echo $article['heading']; ?></h3>
-                            <p><?php echo $article['description']; ?></p>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php else : ?>
-                <p>No articles found.</p>
-            <?php endif; ?>
-        </div>
+        <?php foreach ($articles as $article) : ?>
+            <div class="article">
+                <h3 class="article-title" data-description="<?php echo $article['description']; ?>"><?php echo $article['heading']; ?></h3>
+            </div>
+        <?php endforeach; ?>
     </div>
+
+
 
     <!-- Main content -->
     <!-- Your existing HTML content -->
@@ -160,6 +199,8 @@ $username = $_SESSION['username']; // Access username from session
 
     <script src="../js/home.js"></script>
     <script src="../js/user-articlesearch.js"></script>
+    <script src="../js/article-visibility.js"></script>
+    
 </body>
 
 </html>

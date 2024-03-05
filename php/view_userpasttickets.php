@@ -1,60 +1,51 @@
 <?php
-session_start(); // Start the session
-
-if (!isset($_SESSION['username'])) // Check if user is logged in
-{
-    header("Location: login.php");// Redirect to login page if not logged in
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
     exit;
 }
-else {
-    if (isset($_POST["profile"])) {
-        header("Location: profile.php");
-    }
-    else if (isset($_POST["logout"])) {
-        require_once('../include/process-logout.php');
-    }
+
+// Database connection parameters
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "web_test";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-$username = $_SESSION['username'];// Access username from session
+// Retrieve past tickets and their replies
+$username = $_SESSION['username'];
+$sql = "SELECT t.ticket_ID, t.subject, t.message, t.category, t.priority, r.reply
+        FROM reply_ticket r
+        INNER JOIN ticket t ON r.ticket_replyID = t.ticket_ID
+        WHERE t.username = '$username'";
+$result = $conn->query($sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Apexx | Ticket Submission</title>
+    <head>
+    <title>Apexx | Home</title>
     <link rel="stylesheet" href="../css/home.css">
-    <link rel="stylesheet" href="../css/user-ticket.css" type="text/css">
+    <link rel="stylesheet" href="../css/userreply-ticket.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-h/afd9Bf9mvN+u/PCz1kxG8A9WJ9PSjpijq+y8T7Ylzcug5K/QuPnjOlCEJaJXf/4AB/NSfLRFw31tRiQq+3cQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <script src="https://kit.fontawesome.com/e1d03506f8.js" crossorigin="anonymous"></script>
-    <style>/* New button container */
-.button-container {
-  text-align: center;
-  margin-top: 20px;
-}
 
-/* New button styles */
-.button-container button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.button-container button:hover {
-  background-color: #0056b3;
-}
-
-</style> 
     
 </head>
 
+</head>
 <body>
-
-        <!-- Navigation bar Start-->
-        <nav>
+    <nav>
             <div class="navbar-outerbox">
                 <div class="logo-box">
                     <a href="home.php"><img src="../resources/logos/appex-text-logo.png" alt="logo"></a>
@@ -81,56 +72,44 @@ $username = $_SESSION['username'];// Access username from session
                     </div>
                 </div>
             </div>
-        </nav><br>
-       
-        <!-- Modify the HTML section to include a form -->
-    <div class="container1">
-        <div class="main-section">
-            <h2 class="form-title">Create New Ticket</h2>
-            <form action="process_ticket.php" method="POST" class="ticket-form">
-                <div class="form-group">
-                    <label for="subject">Subject:</label>
-                    <input type="text" id="subject" name="subject" required class="form-input">
-                </div>
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" required class="form-input"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="category">Category:</label>
-                    <select id="category" name="category" required class="form-select">
-                        <option value="General">General</option>
-                        <option value="Technical">Technical</option>
-                        <option value="Billing">Billing</option>
-                        <option value="Hardware">Hardware</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="priority">Priority:</label>
-                    <select id="priority" name="priority" required class="form-select">
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                    </select>
-                </div>
-                <button type="submit" class="submit-button">Submit</button>
-            </form>
-        </div>
-        <div class="button-container">
-            <form action="view_userpasttickets.php" method="POST">
-                <button type="submit" name="view_tickets" class="view-button">View Past Tickets</button>
-            </form>
-        </div>
+        </nav><br><br>
+
+<h2 class="center"> Replied Past Tickets</h2>
+
+<div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Ticket ID</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Reply</th>
+                    <th>Accept Reply</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>".$row["ticket_ID"]."</td>";
+                        echo "<td>".$row["subject"]."</td>";
+                        echo "<td>".$row["message"]."</td>";
+                        echo "<td>".$row["category"]."</td>";
+                        echo "<td>".$row["priority"]."</td>";
+                        echo "<td>".$row["reply"]."</td>";
+                        echo "<td><button class='accept-reply-button' onclick='acceptReply(this)'>Accept Reply</button></td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='7'>No past tickets found.</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
-
-
-
-
-
-<!-- PHP code to handle form submission -->
-
-
-
         <footer>
         <div class="footer-top">    <!--//Footer top.........-->
 
@@ -174,7 +153,14 @@ $username = $_SESSION['username'];// Access username from session
 
 
 
-    <script src="../js/home.js"></script>
-</body>
+    <script src="../js/home.js" type="text/javascript"></script>
+    <script src="../js/ticketaccept_reply.js" type="=text/javascript"></script>
 
+
+
+</body>
 </html>
+
+<?php
+$conn->close();
+?>
