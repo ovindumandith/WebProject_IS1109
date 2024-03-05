@@ -53,7 +53,7 @@ $username = $_SESSION['username']; // Access username from session
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/e1d03506f8.js" crossorigin="anonymous"></script>
     <style>
-.articles-container {
+        .articles-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
@@ -93,6 +93,7 @@ $username = $_SESSION['username']; // Access username from session
 .article:hover:not(:hover) p {
   display: none;
 }
+
 
 
     </style> 
@@ -135,12 +136,13 @@ $username = $_SESSION['username']; // Access username from session
     <!-- Search bar -->
 <div class="search-container">
     <input type="text" id="myInput" placeholder="Search..." />
+    <button type="button" id="searchButton">Search</button>
 </div>
 
 
 
-    <!-- Articles -->
- <!-- Articles -->
+
+    
     <div class="articles-container">
         <?php foreach ($articles as $article) : ?>
             <div class="article">
@@ -148,6 +150,30 @@ $username = $_SESSION['username']; // Access username from session
             </div>
         <?php endforeach; ?>
     </div>
+    <script>
+        document.getElementById("myInput").addEventListener("input", function () {
+        var input = this.value.toUpperCase();
+        var articleTitles = document.querySelectorAll(".article-title");
+        var articlesContainer = document.querySelector(".articles-container");
+
+  // Create a new container for the filtered articles
+        var newContainer = document.createElement("div");
+        newContainer.className = "articles-container";
+
+        articleTitles.forEach(function (title) {
+        var heading = title.textContent || title.innerText;
+        if (heading.toUpperCase().indexOf(input) > -1) {
+        // If the keyword is present, clone the article and append it to the new container
+        var article = title.parentElement.cloneNode(true);
+        newContainer.appendChild(article);
+    }
+  });
+
+  // Replace the old articles container with the new one
+    articlesContainer.parentNode.replaceChild(newContainer, articlesContainer);
+});
+
+    </script>
 
 
 
@@ -199,7 +225,7 @@ $username = $_SESSION['username']; // Access username from session
 
     <script src="../js/home.js"></script>
     <script src="../js/user-articlesearch.js"></script>
-    <script src="../js/article-visibility.js"></script>
+    
     
 </body>
 

@@ -1,16 +1,21 @@
-document.getElementById("myInput").addEventListener("keyup", function () {
-  let input, filter, articles, article, heading, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  articles = document.querySelectorAll(".article"); // Assuming each article has a class "article"
+document.getElementById("myInput").addEventListener("input", function () {
+  var input = this.value.toUpperCase();
+  var articleTitles = document.querySelectorAll(".article-title");
+  var articlesContainer = document.querySelector(".articles-container");
 
-  articles.forEach(function (article) {
-    heading = article.querySelector(".heading"); // Assuming the heading of each article has a class "heading"
-    txtValue = heading.textContent || heading.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      article.style.display = ""; // Show the article if the heading matches the filter
-    } else {
-      article.style.display = "none"; // Hide the article if the heading does not match the filter
+  // Create a new container for the filtered articles
+  var newContainer = document.createElement("div");
+  newContainer.className = "articles-container";
+
+  articleTitles.forEach(function (title) {
+    var heading = title.textContent || title.innerText;
+    if (heading.toUpperCase().indexOf(input) > -1) {
+      // If the keyword is present, clone the article and append it to the new container
+      var article = title.parentElement.cloneNode(true);
+      newContainer.appendChild(article);
     }
   });
+
+  // Replace the old articles container with the new one
+  articlesContainer.parentNode.replaceChild(newContainer, articlesContainer);
 });

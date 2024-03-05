@@ -25,7 +25,9 @@
 
       <!-- Profile Icon -->
       <div class="profile-icon-container">
-        <a href="../php/admin_profile.php"><img src="../resources/user.png" alt="Profile Icon" /></a>
+        <a href="../php/admin_profile.php"
+          ><img src="../resources/user.png" alt="Profile Icon"
+        /></a>
       </div>
     </header>
 
@@ -63,7 +65,7 @@
         <tbody>
           <tr>
             <td>Tickets Submitted</td>
-            <td id="tickets-submitted">Loading...</td>
+            <td id="tickets-submitted"></td>
           </tr>
           <tr>
             <td>Tickets Replied</td>
@@ -98,5 +100,18 @@
         </div>
       </div>
     </footer>
+    <script>
+      // Make an AJAX request to fetch ticket count
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          // Update the content of the <td> element with the received count
+          document.getElementById("tickets-submitted").innerHTML =
+            this.responseText;
+        }
+      };
+      xhr.open("GET", "ticket_count.php", true);
+      xhr.send();
+    </script>
   </body>
 </html>

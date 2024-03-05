@@ -12,6 +12,8 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  width: 80%; /* Adjust the width as needed */
+  max-width: 600px; /* Optional: Set a maximum width to prevent it from becoming too wide on larger screens */
 }
 
 .form-title {

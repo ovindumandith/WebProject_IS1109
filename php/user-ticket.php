@@ -47,6 +47,7 @@ $username = $_SESSION['username'];// Access username from session
   background-color: #0056b3;
 }
 
+
 </style> 
     
 </head>
