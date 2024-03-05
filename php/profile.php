@@ -1,42 +1,95 @@
 <?php
+// Start the session and include necessary files
 session_start();
+include '../include/connection.php';
 
-// Check if user is logged in
+// Check if the user is logged in
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit;
 }
 
-// Include database connection file
-require_once('../include/connection.php');
-
-// Retrieve user information from the database
+// Retrieve user details from the database
 $username = $_SESSION['username'];
-$query = "SELECT * FROM userdetails WHERE username = '{$username}'";
-$result = mysqli_query($connection, $query);
+$query = "SELECT * FROM userdetails WHERE username = ?";
+$stmt = mysqli_prepare($connection, $query);
+mysqli_stmt_bind_param($stmt, "s", $username);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
-// Check if the query was successful and if user exists
-if ($result && mysqli_num_rows($result) > 0) {
-    $user = mysqli_fetch_assoc($result);
+// Fetch user details
+if ($row = mysqli_fetch_assoc($result)) {
+    $userID = $row['userID'];
+    $firstName = $row['firstName'];
+    $lastName = $row['lastName'];
+    $email = $row['email'];
+    $password = $row['password'];
+    // You can fetch more details if needed
 } else {
-    // Handle case where user data is not found
-    $error_message = "User data not found.";
+    $errorMessage = "User details not found.";
 }
 
-// Close database connection
+// Close the database connection
 mysqli_close($connection);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <title>Profile Page</title>
-    <link rel="stylesheet" href="../css/profile-user.css">
+    <link rel="stylesheet" href="../css/profile-user.css" type="text/css">
 
     <link rel="stylesheet" href="../css/home.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/e1d03506f8.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            display: block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .button-container {
+            text-align: center;
+        }
+        .button-container form {
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
     
 </head>
 
@@ -68,28 +121,46 @@ mysqli_close($connection);
                 </div>
             </div>
         </nav></header><br>
-         <h2 style="text-align: center;">User Profile</h2>
-<div class="profile-container">
-    <h1>Welcome, <?php echo ucfirst($user['username']); ?>!</h1>
-    <div class="profile-details">
-        <p><strong>Username:</strong> <?php echo $user['username']; ?></p>
-        <p><strong>Email:</strong> <?php echo $user['email']; ?></p>
-        <p><strong>FirstName:</strong> <?php echo $user['firstName']; ?></p>
-        <p><strong>LastName:</strong> <?php echo $user['lastName']; ?></p>
-        <div id="passwordSection">
-            <p><strong>Password:</strong> <span id="password"><?php echo '********'; ?></span></p><br><br><br>
-            <button id="togglePasswordBtn">Show Password</button>
+           <h1>User Profile</h1>
+    <?php if (isset($errorMessage)) {
+        echo "<p>$errorMessage</p>";
+    } else { ?>
+        <table border="1">
+            <tr>
+                <th>User ID</th>
+                <td><?php echo $userID; ?></td>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <td><?php echo $firstName; ?></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td><?php echo $lastName; ?></td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td><?php echo $username; ?></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><?php echo $email; ?></td>
+            </tr>
+            <tr>
+        <th>Password</th>
+        <td id="password">************</td> <!-- Initial placeholder for password -->
+    </tr>
+            <!-- Add more rows for additional user details -->
+        </table>
+        <div class="button-container">
+            <form action="update-userprofile.php" method="post">
+                <button type="submit">Update Profile</button>
+            </form>
+            <form action="#" method="post">
+                <button type="submit" name="showPassword">Show Password</button>
+            </form>
         </div>
-        <!-- Add more profile information fields as needed -->
-
-        <!-- Button for updating profile details -->
-        <form action="update-userprofile.php" method="post">
-
-        <button id="updateProfileBtn">Update Profile</button></form>
-    </div>
-</div>
-
-<script src="../js/show-password.js"></script>
+    <?php } ?>
      <footer>
         <div class="footer-top">    <!--//Footer top.........-->
 
@@ -134,6 +205,7 @@ mysqli_close($connection);
 
 
     <script src="../js/home.js"></script>
+    <script src="../js/show-password.js"></script>
 </body>
 
 </html>

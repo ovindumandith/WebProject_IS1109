@@ -50,21 +50,6 @@
   background-color: #45a049;
 }
 
-/* Sticky footer */
-footer {
-  width: 100%;
-  padding: 30px 200px;
-  background: rgba(53, 53, 206, 0.8);
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-  font-family: Gotham-book, Calibri, Helvetica Neue, HelveticaNeue, Arial,
-    sans-serif;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-}
 .main-section textarea {
   width: 100%;
   padding: 8px;
@@ -73,4 +58,25 @@ footer {
   border-radius: 5px;
   box-sizing: border-box;
   font-size: 16px;
+}
+
+/* New button container */
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* New button styles */
+.button-container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+  background-color: #0056b3;
 }

@@ -26,6 +26,27 @@ $username = $_SESSION['username'];// Access username from session
     <link rel="stylesheet" href="../css/user-ticket.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/e1d03506f8.js" crossorigin="anonymous"></script>
+    <style>/* New button container */
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* New button styles */
+.button-container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+  background-color: #0056b3;
+}
+</style> 
     
 </head>
 
@@ -86,7 +107,13 @@ $username = $_SESSION['username'];// Access username from session
             <input type="submit" value="Submit">
         </form>
     </div>
+    <div class="button-container">
+        <form action="view_tickets.php" method="POST">
+            <button type="submit" name="view_tickets">View Past Tickets</button>
+        </form>
+    </div>
 </div>
+
 
 
 <!-- PHP code to handle form submission -->

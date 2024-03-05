@@ -39,9 +39,9 @@
             </div>
             
             <p>
-"Welcome to our technical support system company, where reliability meets expertise.
- We specialize in providing seamless solutions for all your tech-related queries, ensuring your systems run smoothly around the clock.
-  Trust us to be your dedicated partner in navigating the digital landscape with ease."</p>
+  <span class="dropcap">W</span>elcome to our technical support system company, where reliability meets expertise. We specialize in providing seamless solutions for all your tech-related queries, ensuring your systems run smoothly around the clock. Trust us to be your dedicated partner in navigating the digital landscape with ease.
+</p>
+
                 <form action="index.php" method="post">
                     <button id="signup-button" type="submit" name="signup"><span>+</span>Join Us</button>
                     <button id="login-button" type="submit" name="login">Login</button>

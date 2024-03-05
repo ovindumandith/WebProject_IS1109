@@ -1,13 +1,12 @@
-document
-  .getElementById("togglePasswordBtn")
-  .addEventListener("click", function () {
-    var password = document.getElementById("password");
-    var passwordSection = document.getElementById("passwordSection");
-    if (password.innerText === "********") {
-      password.innerText = "<?php echo $user['password']; ?>";
-      this.innerText = "Hide Password";
-    } else {
-      password.innerText = "********";
-      this.innerText = "Show Password";
-    }
-  });
+document.getElementById("showPassword").addEventListener("click", function () {
+  var passwordField = document.getElementById("password");
+  var actualPassword = "<?php echo $password; ?>"; // Get the actual password from PHP
+
+  if (passwordField.textContent === "************") {
+    passwordField.textContent = actualPassword; // Show the actual password
+    this.textContent = "Hide Password";
+  } else {
+    passwordField.textContent = "************"; // Hide the actual password
+    this.textContent = "Show Password";
+  }
+});

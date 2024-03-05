@@ -73,9 +73,6 @@ mysqli_close($connection);
       <div class="dropdown">
         <a href="#">Tickets ▾</a>
         <div class="dropdown-content">
-          <a href="#">Submit a Ticket</a>
-          <a href="#">View past Tickets</a>
-        </div>
       </div>
       <a href="article.html">Knowledge Base</a>
       <a href="#">Contact</a>

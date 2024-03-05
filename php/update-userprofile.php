@@ -1,54 +1,37 @@
 <?php
+// Start the session and include necessary files
 session_start();
+include '../include/connection.php';
 
-// Check if user is logged in
+// Check if the user is logged in
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit;
 }
 
-// Include database connection file
-require_once('../include/connection.php');
-
-// Check if form is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve form data
-    $userID = $_POST['userID'];
-    $email = $_POST['email'];
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-
-    // Update user information in the database
-    $query = "UPDATE userdetails SET email = '{$email}', firstName = '{$firstName}', lastName = '{$lastName}' WHERE userID = '{$userID}'";
-    $result = mysqli_query($connection, $query);
-
-    if ($result) {
-        // User details updated successfully
-        header("Location: {$_SERVER['PHP_SELF']}?success=true");
-        exit;
-    } else {
-        // Failed to update user details
-        $error_message = "Failed to update user details.";
-    }
-}
-
-// Retrieve user information from the database
+// Retrieve user details from the database
 $username = $_SESSION['username'];
-$query = "SELECT * FROM userdetails WHERE username = '{$username}'";
-$result = mysqli_query($connection, $query);
+$query = "SELECT * FROM userdetails WHERE username = ?";
+$stmt = mysqli_prepare($connection, $query);
+mysqli_stmt_bind_param($stmt, "s", $username);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
-// Check if the query was successful and if user exists
-if ($result && mysqli_num_rows($result) > 0) {
-    $user = mysqli_fetch_assoc($result);
+// Fetch user details
+if ($row = mysqli_fetch_assoc($result)) {
+    $userID = $row['userID'];
+    $firstName = $row['firstName'];
+    $lastName = $row['lastName'];
+    $email = $row['email'];
+    $password = $row['password'];
+    // You can fetch more details if needed
 } else {
-    // Handle case where user data is not found
-    $error_message = "User data not found.";
+    $errorMessage = "User details not found.";
 }
 
-// Close database connection
+// Close the database connection
 mysqli_close($connection);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,6 +43,46 @@ mysqli_close($connection);
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/e1d03506f8.js" crossorigin="anonymous"></script>
+    <style>
+            h2 {
+            text-align: center;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
     
 </head>
 <body><header>
@@ -89,31 +112,35 @@ mysqli_close($connection);
                     </div>
                 </div>
             </div>
-        </nav></header><br>
-         <h2 style="text-align: center;">Update Profile</h2>
-
+        </nav></header>
+<h2 style="text-align: center;">Update Profile</h2>
 
     <?php if (isset($error_message)) : ?>
         <p><?php echo $error_message; ?></p>
     <?php endif; ?>
 
     <?php if (isset($_GET['success']) && $_GET['success'] === 'true') : ?>
-        
+        <!-- Success message -->
+        <p>Profile updated successfully.</p>
     <?php endif; ?>
 
-  <br>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-        <input type="hidden" name="userID" value="<?php echo $user['userID']; ?>">
+    <br>
+    <form action="update-userprofile-process.php" method="POST">
+        <input type="hidden" name="userID" value="<?php echo $userID; ?>">
         <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" value="<?php echo $user['username']; ?>" disabled><br><br>
+        <input type="text" id="username" name="username" value="<?php echo $username; ?>" disabled><br><br>
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>"><br><br>
+        <input type="email" id="email" name="email" value="<?php echo $email; ?>"><br><br>
         <label for="firstName">First Name:</label><br>
-        <input type="text" id="firstName" name="firstName" value="<?php echo $user['firstName']; ?>"><br><br>
+        <input type="text" id="firstName" name="firstName" value="<?php echo $firstName; ?>"><br><br>
         <label for="lastName">Last Name:</label><br>
-        <input type="text" id="lastName" name="lastName" value="<?php echo $user['lastName']; ?>"><br><br>
+        <input type="text" id="lastName" name="lastName" value="<?php echo $lastName; ?>"><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" value="<?php echo $password; ?>"><br><br>
         <input type="submit" value="Update Profile">
     </form>
+
+
     <footer>
         <div class="footer-top">    <!--//Footer top.........-->
 
