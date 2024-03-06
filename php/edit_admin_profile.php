@@ -22,9 +22,6 @@ if ($result) {
     $errorMessage = "Error: " . mysqli_error($connection);
 }
 
-// Close the database connection
-mysqli_close($connection);
-
 // Handle form submission to update admin profile
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
@@ -33,22 +30,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Hash the password for security
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
     // Update admin profile data in the database
-    $updateSql = "UPDATE admindetails SET firstName = '$firstName', lastName = '$lastName', email = '$email', password = '$hashedPassword' WHERE username = '$username'";
-    $updateResult = mysqli_query($conn, $updateSql);
+    $updateSql = "UPDATE admindetails SET firstName = '$firstName', lastName = '$lastName', email = '$email', password = '$password' WHERE username = '$username'";
+    $updateResult = mysqli_query($connection, $updateSql);
 
     if ($updateResult) {
         // Redirect back to admin profile page after successful update
         header("Location: admin_profile.php");
         exit;
     } else {
-        $errorMessage = "Error updating profile: " . mysqli_error($conn);
+        $errorMessage = "Error updating profile: " . mysqli_error($connection);
     }
 }
+
+// Close the database connection
+mysqli_close($connection);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="../css/header+footer.css" rel="stylesheet" type="text/css">
     <link href="../css/edit_admin_profile.css" rel="stylesheet" type="text/css">
 
+
 </head>
 <body>
     <header>
@@ -67,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="logo-container">
         <img src="../resources/logo.png" alt="Company Logo" />
         <div class="title-container">
-          <h1>Apexx Solutions Admin Panel</h1>
+          <h1 style="color:white">Apexx Solutions Admin Panel</h1>
         </div>
       </div>
 
@@ -83,6 +82,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
        
     </header>
+        <nav>
+      <a href="../html/admin_home.html">Home</a>
+      <div class="dropdown">
+        <a href="../php/view_ticket.php">Tickets</a>
+      </div>
+      <div class="dropdown">
+        <a href="../php/view_user.php">Users</a>
+        <div class="dropdown-content">
+
+        </div>
+      </div>
+      <a href="../html/article.html">Knowledge Base</a>
+     <a href="../php/view_feedback.php">Feedback</a>
+    </nav>
 
     <main>
         <h1>Edit Admin Profile</h1>
@@ -102,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password" value=""><br><br>
 
-            <input type="submit" value="Submit">
+            <input type="submit" value="Update" >
         </form>
     </main>
 

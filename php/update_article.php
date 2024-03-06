@@ -99,7 +99,7 @@ input[type="submit"]:hover {
       <div class="logo-container">
         <img src="../resources/logo.png" alt="Company Logo" />
         <div class="title-container">
-          <h1>ABC Support Desk</h1>
+          <h1>Appex Solutions Admin Panel</h1>
         </div>
       </div>
 
@@ -146,7 +146,7 @@ input[type="submit"]:hover {
 </form><br>
 
 <footer>
-      <p>© 2024 ABC Support Desk. All rights reserved.</p>
+      <p>© 2024 Appexx Solutions. All rights reserved.</p>
       <div class="social-media-icons">
         <div class="icon-container">
           <a href="https://www.facebook.com/yourpage"

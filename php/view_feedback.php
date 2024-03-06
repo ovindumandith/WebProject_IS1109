@@ -85,6 +85,21 @@ $result = $conn->query($sql);
     color: #333;
 
         }
+            .delete-button {
+        padding: 6px 10px;
+        border: none;
+        background-color: #dc3545;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        margin-right: 5px;
+    }
+
+    .delete-button:hover {
+        background-color: #c82333;
+    }
     </style>
 </head>
 <body>
@@ -135,15 +150,21 @@ $result = $conn->query($sql);
 <?php
 if ($result->num_rows > 0) {
   echo "<table id='myTable'>";
-  echo "<tr><th>ID</th><th>Name</th><th>Email</th><th>Feedback</th></tr>";
+  echo "<tr><th>ID</th><th>Name</th><th>Email</th><th>Feedback</th><th>Actions</th></tr>";
   // Output data of each row
   while($row = $result->fetch_assoc()) {
-    echo "<tr>";
-    echo "<td>".$row["id"]."</td>";
-    echo "<td>".$row["name"]."</td>";
-    echo "<td>".$row["email"]."</td>";
-    echo "<td>".$row["feedback"]."</td>";
-    echo "</tr>";
+echo "<tr>";
+echo "<td>".$row["id"]."</td>";
+echo "<td>".$row["name"]."</td>";
+echo "<td>".$row["email"]."</td>";
+echo "<td>".$row["feedback"]."</td>";
+echo "<td class='action-column'>";
+echo "<form method='post' action='../php/delete_feedback.php'>";
+echo "<input type='hidden' name='id' value='".$row["id"]."'>";
+echo "<button type='submit' class='delete-button' onclick=\"return confirm('Are you sure you want to delete this feedback?');\">Delete</button>";
+echo "</form>";
+echo "</td>";
+echo "</tr>";
   }
   echo "</table>";
 } else {

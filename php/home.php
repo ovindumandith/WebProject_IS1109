@@ -156,46 +156,49 @@ $username = $_SESSION['username']; // Access username from session
         <div class="accordion-topic">Frequently Asked Questions</div>
         <div class="section" id="section1">
             <div class="header" id="header1">
-                <span class="faq-header-text">Question 1</span><span><i class="fa-solid fa-circle-chevron-down"></i></span>
+                <span class="faq-header-text">How do i create a Ticket?</span><span><i class="fa-solid fa-circle-chevron-down"></i></span>
             </div>
             <div class="content" id="content1">
-                <p>Here is the content of Question 1</p>
+                <p>Go in to the tickets Tab and create a new Ticket,you can view your past Tickets from View Past Tickets 
+                    in the Tickets Tab.
+                </p>
             </div>
         </div>
 
         <div class="section" id="section2">
             <div class="header" id="header2">
-                <span class="faq-header-text">Question 2</span><span><i class="fa-solid fa-circle-chevron-down"></i></span>
+                <span class="faq-header-text">What is a KnowledgeBase?</span><span><i class="fa-solid fa-circle-chevron-down"></i></span>
             </div>
             <div class="content" id="content2">
-                <p>Here is the content of Question 2</p>
+                <p>Knowledgebas is a database with a collection of articles designed to addreess your common Technical 
+                    Support Questions. </p>
             </div>
         </div>
 
         <div class="section" id="section3">
             <div class="header" id="header3">
-                <span class="faq-header-text">Question 3</span><span><i class="fa-solid fa-circle-chevron-down"></i></span>
+                <span class="faq-header-text">How do i search articles in the Knowledgebase?</span><span><i class="fa-solid fa-circle-chevron-down"></i></span>
             </div>
             <div class="content" id="content3">
-                <p>Here is the content of Question 3</p>
+                <p>Input the Desired Keyword of your Technical Support Question.</p>
             </div>
         </div>
 
         <div class="section" id="section1">
             <div class="header" id="header1">
-                <span class="faq-header-text">Question 4</span><span><i class="fa-solid fa-circle-chevron-down"></i></span>
+                <span class="faq-header-text">Can i customize my Profile?</span><span><i class="fa-solid fa-circle-chevron-down"></i></span>
             </div>
             <div class="content" id="content1">
-                <p>Here is the content of Question 4</p>
+                <p>Yes, you can customize your profile according to your need.</p>
             </div>
         </div>
 
         <div class="section" id="section2">
             <div class="header" id="header2">
-                <span class="faq-header-text">Question 5</span><span><i class="fa-solid fa-circle-chevron-down"></i></span>
+                <span class="faq-header-text">Is it compulsory to Submit Feedback?</span><span><i class="fa-solid fa-circle-chevron-down"></i></span>
             </div>
             <div class="content" id="content2">
-                <p>Here is the content of Question 5</p>
+                <p>No, but it helps us a lot to identify our weakness and improve our system.Thankyou in advance.</p>
             </div>
         </div>
       

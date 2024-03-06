@@ -69,58 +69,18 @@ mysqli_close($connection);
 
     <!-- Navigation Bar -->
     <nav>
-      <a href="../html/admin_home.html">Home</a>
+      <a href="#">Home</a>
       <div class="dropdown">
-        <a href="../php/view_ticket.php">Tickets</a>
-      </div>
-      <div class="dropdown">
-        <a href="../php/view_user.php">Users</a>
+        <a href="#">Tickets ▾</a>
         <div class="dropdown-content">
-
-        </div>
       </div>
-      <a href="../html/article.html">Knowledge Base</a>
-     <a href="../php/view_feedback.php">Feedback</a>
+      <a href="article.html">Knowledge Base</a>
+      <a href="#">Contact</a>
+      <a href="../php/view_feedback.php">Feedback</a>
     </nav>
 
 
-
-
-    <main>
-        <h1>Admin Profile</h1>
-        <!-- Display admin profile information here -->
-        <?php if (isset($adminData)) : ?>
-        <table>
-            <tr>
-                <th>First Name</th>
-                <td><?php echo $adminData['firstName']; ?></td>
-            </tr>
-            <tr>
-                <th>Last Name</th>
-                <td><?php echo $adminData['lastName']; ?></td>
-            </tr>
-            <tr>
-                <th>Username</th>
-                <td><?php echo $adminData['username']; ?></td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td><?php echo $adminData['email']; ?></td>
-            </tr>
-            <!-- Add other fields as needed -->
-        </table>
-        <?php if ($_SESSION['role'] === 'admin') : ?>
-        <button onclick="location.href='edit_admin_profile.php'">Edit Profile</button>
-        <?php endif; ?>
-        <?php else : ?>
-        <p>No data found for the current admin.</p>
-        <?php endif; ?>
-    </main>
-
-    
-    
-
-    <footer>
+        <footer>
       <p>© 2024 Apexx Solutions. All rights reserved.</p>
       <div class="social-media-icons">
         <div class="icon-container">

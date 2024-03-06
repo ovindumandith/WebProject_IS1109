@@ -112,7 +112,7 @@ mysqli_close($connection);
                     </div>
                 </div>
             </div>
-        </nav></header>
+        </nav></header><br><br>
 <h2 style="text-align: center;">Update Profile</h2>
 
     <?php if (isset($error_message)) : ?>
@@ -124,7 +124,7 @@ mysqli_close($connection);
         <p>Profile updated successfully.</p>
     <?php endif; ?>
 
-    <br>
+    
     <form action="update-userprofile-process.php" method="POST">
         <input type="hidden" name="userID" value="<?php echo $userID; ?>">
         <label for="username">Username:</label><br>

@@ -161,6 +161,50 @@ mysqli_close($connection);
             </form>
         </div>
     <?php } ?>
+        <footer>
+        <div class="footer-top">    <!--//Footer top.........-->
+
+            <div class="footer-top-left">
+                <p>
+                    <a href="about.html">About</a>
+                    <a href="contact-us.html">Contact Us</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="faq.html">FAQs</a>
+                    <a href="knowledgebase.html">Knowledgebase</a>
+                    <a href="team.html">Team</a>
+                </p>
+            </div>
+            <!-- .................. -->
+            <div class="footer-top-right">
+                <img src="../resources/logos/Untitled-14-whitepng.png" alt="" id="footer-logo">
+                <div class="logo-text">
+                    <span class="logo-text-head">Apexx Solutions</span>
+                    <span class="logo-text-sub">Make it smarter</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">     <!--//Footer bottom.........-->
+            
+            <div class="footer-bottom-left">
+                <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+                <a href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a> 
+            </div>
+            <!-- ................... -->
+            <div class="footer-bottom-right">
+                <p>© 2024 Apexx Solutions (pvt)Ltd , located in Sri Lanka. All rights reserved. </p>
+            </div>
+
+        </div> 
+    </footer>
+    <!-- ********************* ------------Footer Section Ends here--------- *********************** -->
+
+
+
+    
     
     <!-- ********************* ------------Footer Section Ends here--------- *********************** -->
 
