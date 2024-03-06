@@ -38,12 +38,12 @@ $conn->close();
     <style>
 
         table {
-        width: 90%; /* Reduce table width */
+        width: 90%; 
         border-collapse: collapse;
-        margin: 20px auto; /* Center the table */
+        margin: 20px auto; 
     }
     th, td {
-        padding: 8px; /* Reduce cell padding */
+        padding: 8px; 
         text-align: left;
         border-bottom: 1px solid #ddd;
     }
@@ -62,14 +62,14 @@ $conn->close();
     h2 {
         margin-top: 30px;
         color: #333;
-        text-align: center; /* Center the heading */
+        text-align: center; 
     }
     .action-column {
-        width: 80px; /* Reduce action column width */
-        text-align: center; /* Center the action buttons */
+        width: 80px;
+        text-align: center; 
     }
     .action-button {
-        padding: 6px 10px; /* Adjust button padding */
+        padding: 6px 10px; 
         border: none;
         background-color: #007bff;
         color: #fff;
@@ -82,14 +82,13 @@ $conn->close();
         background-color: #0056b3;
     }
             .delete-button {
-            background-color: #dc3545; /* Red color */
-            color: #fff; /* White text color */
+            background-color: #dc3545; 
+            color: #fff; 
         }
 
-        /* Define update button style */
         .update-button {
-            background-color: #007bff; /* Blue color */
-            color: #fff; /* White text color */
+            background-color: #007bff; 
+            color: #fff; 
         }
 
     </style>

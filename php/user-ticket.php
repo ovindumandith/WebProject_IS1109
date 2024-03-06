@@ -66,8 +66,8 @@ $username = $_SESSION['username'];// Access username from session
                         <li><a href="../php/knowledgebase.php">Knowledgebase</a></li>
                         <li><a href="../php/user-ticket.php">Tickets</a></li>
                         <li><a href="../php/user-feedback.php">Feedback</a></li>
-                        <li><a href="about.html">AboutUS</a></li>
-                        <li><a href="contact-us.html">Contact Us</a></li>
+                        <li><a href="#">AboutUS</a></li>
+                        <li><a href="#">Contact Us</a></li>
                     </ul>
                     <div class="userimage">
                         <img src="../resources/images/userimage.png" alt="">
@@ -82,7 +82,7 @@ $username = $_SESSION['username'];// Access username from session
                     </div>
                 </div>
             </div>
-        </nav><br>
+        </nav>
        
         <!-- Modify the HTML section to include a form -->
     <div class="container1">
