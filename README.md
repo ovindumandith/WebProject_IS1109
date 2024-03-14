@@ -57,7 +57,8 @@ This web application is designed to provide technical support services to users.
 
 ## License
 
-This project is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- This project is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- This project was developed as part of the module IS-1109 at the University of Colombo School of Computing (UCSC).
 
 You are free to:
 
