@@ -38,15 +38,21 @@ Welcome to the Technical Support Web Application! This web application provides 
 
 ## Accessing and Logins
 
-1. **User Login**:
+1. **Landing Page**: The landing page of the application is available at `../php/index.php`.
 
-- Username: userMark
-- Password: 123
+2. **User and Admin Login**:
 
-2. **Admin Login**:
+- Navigate to the landing page.
+- Choose to login either as a user or admin.
+- Use the following credentials to login:
+  - **User Login**:
+    - Username: userMark
+    - Password: 123
+  - **Admin Login**:
+    - Username: adminAmy
+    - Password: 123
 
-- Username: adminAmy
-- Password: 123
+3. **Alternative Logins**: Additional login details can be found in the database tables `userdetails` and `admindetails` included in the provided SQL file.
 
 ## Usage
 
