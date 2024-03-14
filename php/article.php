@@ -24,11 +24,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO articles (articleID, heading, description) VALUES ('$articleID', '$heading', '$description')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+        // Close connection
+        $conn->close();
+
+        // Success message
+        echo "<script>alert('Article inserted successfully');</script>";
+
+        // Redirect to article.html after a delay
+        echo "<script>setTimeout(function(){ window.location.href = '../html/article.html'; }, 1000);</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
+
 
 // Close connection
 $conn->close();

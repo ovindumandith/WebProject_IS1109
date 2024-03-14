@@ -99,7 +99,7 @@ $conn->close();
       <div class="logo-container">
         <img src="../resources/logo.png" alt="Company Logo" />
         <div class="title-container">
-          <h1>ABC Support Desk</h1>
+          <h1>Apexx Solutions Admin Panel</h1>
         </div>
       </div>
 
@@ -148,9 +148,9 @@ if ($result->num_rows > 0) {
         echo "<td>".$row["articleID"]."</td>";
         echo "<td>".$row["heading"]."</td>";
         echo "<td>".$row["description"]."</td>";
-echo "<td class='action-column'><form action='../php/update_article.php' method='GET'><input type='hidden' name='id' value='".$row["articleID"]."'><button type='submit' class='action-button update-button'>Update</button></form></td>";
-            echo "<td class='action-column'><form action='../php/delete_article.php' method='GET' onsubmit='return confirmDelete()'><input type='hidden' name='id' value='".$row["articleID"]."'><button type='submit' class='action-button delete-button'>Delete</button></form></td>";
-            echo "</tr>";
+        echo "<td class='action-column'><form action='../php/update_article.php' method='GET'><input type='hidden' name='id' value='".$row["articleID"]."'><button type='submit' class='action-button update-button'>Update</button></form></td>";
+        echo "<td class='action-column'><form action='../php/delete_article.php' method='GET' onsubmit='return confirmDelete()'><input type='hidden' name='id' value='".$row["articleID"]."'><button type='submit' class='action-button delete-button'>Delete</button></form></td>";
+        echo "</tr>";
     }
     echo "</table>";
 } else {
@@ -160,7 +160,7 @@ echo "<td class='action-column'><form action='../php/update_article.php' method=
 <script src="../js/ticket-search.js"></script>
 
 <footer>
-      <p>© 2024 ABC Support Desk. All rights reserved.</p>
+      <p>© 2024 Apexx Solutions. All rights reserved.</p>
       <div class="social-media-icons">
         <div class="icon-container">
           <a href="https://www.facebook.com/yourpage"

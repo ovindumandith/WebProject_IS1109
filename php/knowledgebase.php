@@ -52,46 +52,71 @@ $username = $_SESSION['username']; // Access username from session
     <link rel="stylesheet" href="../css/knowledgebase.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/e1d03506f8.js" crossorigin="anonymous"></script>
+
     <style>
         .articles-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .article {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .article:hover {
+            background-color: #f5f5f5;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .article h3 {
+            margin-top: 0;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #333;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .article p {
+            display:none; /* Hide description by default */
+        }
+
+        .article:hover p {
+            display: block; /* Show description when article is hovered over */
+        }
+
+
+.search-container {
+    text-align: center;
+    margin-bottom: 20px; 
 }
 
-.article {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+#myInput {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px; 
+    width: 500px;
 }
 
-.article:hover {
-  background-color: #f5f5f5;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+#searchButton {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #007bff; 
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.article h3 {
-  margin-top: 0;
-  cursor: pointer;
-  font-size: 1.2em;
-  color: #333;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
-}
-
-.article p {
-  display: none;
-}
-
-.article:hover p {
-  display: block;
-}
-
-.article:hover:not(:hover) p {
-  display: none;
+#searchButton:hover {
+    background-color: #0056b3;
 }
 
 
@@ -143,13 +168,14 @@ $username = $_SESSION['username']; // Access username from session
 
 
     
-    <div class="articles-container">
-        <?php foreach ($articles as $article) : ?>
-            <div class="article">
-                <h3 class="article-title" data-description="<?php echo $article['description']; ?>"><?php echo $article['heading']; ?></h3>
-            </div>
-        <?php endforeach; ?>
-    </div>
+<div class="articles-container">
+    <?php foreach ($articles as $article) : ?>
+        <div class="article">
+            <h3 class="article-title"><?php echo $article['heading']; ?></h3>
+            <p class="article-description"><?php echo $article['description']; ?></p>
+        </div>
+    <?php endforeach; ?>
+</div>
     <script>
         document.getElementById("myInput").addEventListener("input", function () {
         var input = this.value.toUpperCase();
