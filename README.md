@@ -33,11 +33,11 @@ This web application is designed to provide technical support services to users.
 
 ## Accessing and Logins
 
-1.The landing page will be available in ../php/index.php.
+1. The landing page will be available in ../php/index.php.
 
-2.From there login as a user or admin.
+2. From there login as a user or admin.
 
-3.The other login are available in the tables userdetails and admindetails in the sql file.
+3. The other login are available in the tables userdetails and admindetails in the sql file.
 
 ### admin login
 
@@ -51,9 +51,9 @@ This web application is designed to provide technical support services to users.
 
 # Usage
 
-1.After loggin successfully ypo can perform the functionalities according to your desire.
+1. After loggin successfully ypo can perform the functionalities according to your desire.
 
-2.Logout from the respectives user views and login back to admin view o see the functionalities of the admin.
+2. Logout from the respectives user views and login back to admin view o see the functionalities of the admin.
 
 ## License
 
