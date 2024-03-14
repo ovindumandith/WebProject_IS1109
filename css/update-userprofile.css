@@ -1,0 +1,43 @@
+/* CSS for form styling */
+form {
+  max-width: 600px; /* Increased width */
+  margin: 0 auto;
+  padding: 10px; /* Reduced padding */
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Align items to center */
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left; /* Align labels to left */
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="submit"] {
+  width: calc(100% - 20px); /* Adjusted width */
+  padding: 8px; /* Reduced padding */
+  margin-bottom: 8px; /* Reduced margin */
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+form input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 8px;
+  text-align: left; /* Align error messages to left */
+}
